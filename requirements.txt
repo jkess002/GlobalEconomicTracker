@@ -1,0 +1,8 @@
+kafka-python
+pandas
+duckdb
+dbt-core
+python-dotenv
+yfinance
+seaborn
+matplotlib

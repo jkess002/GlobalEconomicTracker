@@ -1,0 +1,11 @@
+name: 'global_economic_tracker'
+version: '1.0'
+config-version: 2
+
+profile: 'global_economic_tracker'
+
+model-paths: ["models"]
+
+models:
+  global_economic_tracker:
+    +materialized: table

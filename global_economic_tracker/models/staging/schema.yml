@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_commodity_returns
+    description: "Daily commodity returns"
+    columns:
+      - name: daily_return
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: -0.5
+              max_value: 0.5
+      - name: ticker
+        tests: [not_null]
+      - name: timestamp
+        tests: [not_null]
+
+  - name: stg_index_returns
+    description: "Daily index returns"
+    columns:
+      - name: daily_return
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: -0.5
+              max_value: 0.5
+      - name: ticker
+        tests: [ not_null ]
+      - name: timestamp
+        tests: [ not_null ]
+

@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: stg_commodity_metrics
+    description: "Rolling metrics and trend for commodity returns"
+    columns:
+      - name: ticker
+        tests: [not_null]
+      - name: timestamp
+        tests: [not_null]
+      - name: daily_return
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: -0.5
+              max_value: 0.5
+      - name: rolling_avg_mo
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -0.3
+              max_value: 0.3
+      - name: sharpe_mo
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -2
+              max_value: 2
+      - name: trend
+        tests:
+          - accepted_values:
+              values: ['up', 'down', 'flat']
+
+  - name: stg_index_metrics
+    description: "Rolling metrics and trend for index returns"
+    columns:
+      - name: ticker
+        tests: [not_null]
+      - name: timestamp
+        tests: [not_null]
+      - name: daily_return
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: -0.5
+              max_value: 0.5
+      - name: rolling_avg_mo
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -0.3
+              max_value: 0.3
+      - name: sharpe_mo
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -2
+              max_value: 2
+      - name: trend
+        tests:
+          - accepted_values:
+              values: ['up', 'down', 'flat']
