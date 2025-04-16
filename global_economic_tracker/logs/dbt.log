@@ -10572,3 +10572,2150 @@ where timestamp is null
 [0m20:12:12.452886 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6c45121ab0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6c468a2410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6c44fe12d0>]}
 [0m20:12:12.453570 [debug] [MainThread]: Flushing usage events
 [0m20:12:13.180609 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:16:59.931419 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6dbbe55a80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6dbb63e290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6dbb63eec0>]}
+
+
+============================== 13:16:59.936790 | b8af9d36-c09e-4f27-a831-4180e4e35090 ==============================
+[0m13:16:59.936790 [info ] [MainThread]: Running with dbt=1.9.4
+[0m13:16:59.937982 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '/home/joey/.dbt', 'log_path': '/mnt/c/Users/joeyk/PycharmProjects/GlobalEconomicTracker/global_economic_tracker/logs', 'debug': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m13:17:00.097916 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b8af9d36-c09e-4f27-a831-4180e4e35090', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6dbd5c23e0>]}
+[0m13:17:00.136308 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b8af9d36-c09e-4f27-a831-4180e4e35090', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6dbb006680>]}
+[0m13:17:00.138356 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m13:17:00.207581 [debug] [MainThread]: checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
+[0m13:17:01.499743 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m13:17:01.500564 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m13:17:01.524852 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b8af9d36-c09e-4f27-a831-4180e4e35090', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6db9378130>]}
+[0m13:17:01.593557 [debug] [MainThread]: Wrote artifact WritableManifest to /mnt/c/Users/joeyk/PycharmProjects/GlobalEconomicTracker/global_economic_tracker/target/manifest.json
+[0m13:17:01.598227 [debug] [MainThread]: Wrote artifact SemanticManifest to /mnt/c/Users/joeyk/PycharmProjects/GlobalEconomicTracker/global_economic_tracker/target/semantic_manifest.json
+[0m13:17:01.620324 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b8af9d36-c09e-4f27-a831-4180e4e35090', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6db9365c60>]}
+[0m13:17:01.621105 [info ] [MainThread]: Found 4 models, 22 data tests, 549 macros
+[0m13:17:01.621862 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b8af9d36-c09e-4f27-a831-4180e4e35090', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6db9365bd0>]}
+[0m13:17:01.623479 [info ] [MainThread]: 
+[0m13:17:01.624260 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:17:01.625095 [info ] [MainThread]: 
+[0m13:17:01.625956 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m13:17:01.630158 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m13:17:01.661962 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m13:17:01.662756 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m13:17:01.663490 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:17:04.809234 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+connection to server at "172.18.0.2", port 5432 failed: No route to host
+	Is the server running on that host and accepting TCP/IP connections?
+
+[0m13:17:07.928963 [debug] [ThreadPool]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m13:17:07.930146 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m13:17:07.931032 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_schemas
+[0m13:17:07.931682 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m13:17:07.932436 [debug] [ThreadPool]: On list_airflow: No close available on handle
+[0m13:17:07.933490 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:17:07.934358 [debug] [MainThread]: Connection 'list_airflow' was properly closed.
+[0m13:17:07.935111 [info ] [MainThread]: 
+[0m13:17:07.936111 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 6.31 seconds (6.31s).
+[0m13:17:07.937093 [error] [MainThread]: Encountered an error:
+Database Error
+  connection to server at "172.18.0.2", port 5432 failed: No route to host
+  	Is the server running on that host and accepting TCP/IP connections?
+  
+[0m13:17:07.938435 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 8.056945, "process_in_blocks": "15352", "process_kernel_time": 0.157068, "process_mem_max_rss": "110436", "process_out_blocks": "0", "process_user_time": 0.952882}
+[0m13:17:07.939511 [debug] [MainThread]: Command `dbt run` failed at 13:17:07.939410 after 8.06 seconds
+[0m13:17:07.940385 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6dbbe55a80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6db9365e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6db93bb9a0>]}
+[0m13:17:07.941176 [debug] [MainThread]: Flushing usage events
+[0m13:17:08.318854 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:17:11.445048 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec9a25a80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec9904880>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec8bb9d20>]}
+
+
+============================== 13:17:11.447613 | 0e2bbceb-db29-4ca6-ac55-ac276a675856 ==============================
+[0m13:17:11.447613 [info ] [MainThread]: Running with dbt=1.9.4
+[0m13:17:11.448574 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/joey/.dbt', 'debug': 'False', 'version_check': 'True', 'log_path': '/mnt/c/Users/joeyk/PycharmProjects/GlobalEconomicTracker/global_economic_tracker/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt test', 'send_anonymous_usage_stats': 'True'}
+[0m13:17:11.555006 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '0e2bbceb-db29-4ca6-ac55-ac276a675856', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec9900700>]}
+[0m13:17:11.590816 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '0e2bbceb-db29-4ca6-ac55-ac276a675856', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec924b280>]}
+[0m13:17:11.591827 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m13:17:11.638079 [debug] [MainThread]: checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
+[0m13:17:12.586444 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m13:17:12.587679 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m13:17:12.619788 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0e2bbceb-db29-4ca6-ac55-ac276a675856', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec6b84130>]}
+[0m13:17:12.697808 [debug] [MainThread]: Wrote artifact WritableManifest to /mnt/c/Users/joeyk/PycharmProjects/GlobalEconomicTracker/global_economic_tracker/target/manifest.json
+[0m13:17:12.702531 [debug] [MainThread]: Wrote artifact SemanticManifest to /mnt/c/Users/joeyk/PycharmProjects/GlobalEconomicTracker/global_economic_tracker/target/semantic_manifest.json
+[0m13:17:12.726802 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0e2bbceb-db29-4ca6-ac55-ac276a675856', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec6b2eda0>]}
+[0m13:17:12.727687 [info ] [MainThread]: Found 4 models, 22 data tests, 549 macros
+[0m13:17:12.728463 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0e2bbceb-db29-4ca6-ac55-ac276a675856', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec6b2fd60>]}
+[0m13:17:12.730409 [info ] [MainThread]: 
+[0m13:17:12.731162 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:17:12.731858 [info ] [MainThread]: 
+[0m13:17:12.732824 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m13:17:12.737278 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow_public'
+[0m13:17:12.776567 [debug] [ThreadPool]: Using postgres connection "list_airflow_public"
+[0m13:17:12.777473 [debug] [ThreadPool]: On list_airflow_public: BEGIN
+[0m13:17:12.778177 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:17:15.974791 [debug] [ThreadPool]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+connection to server at "172.18.0.2", port 5432 failed: No route to host
+	Is the server running on that host and accepting TCP/IP connections?
+
+[0m13:17:19.097854 [debug] [ThreadPool]: Postgres adapter: Error running SQL: BEGIN
+[0m13:17:19.099230 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m13:17:19.099974 [debug] [ThreadPool]: Postgres adapter: Error running SQL: macro list_relations_without_caching
+[0m13:17:19.100662 [debug] [ThreadPool]: Postgres adapter: Rolling back transaction.
+[0m13:17:19.101350 [debug] [ThreadPool]: On list_airflow_public: No close available on handle
+[0m13:17:19.102363 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:17:19.103045 [debug] [MainThread]: Connection 'list_airflow_public' was properly closed.
+[0m13:17:19.103736 [info ] [MainThread]: 
+[0m13:17:19.104502 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 6.37 seconds (6.37s).
+[0m13:17:19.105338 [error] [MainThread]: Encountered an error:
+Database Error
+  connection to server at "172.18.0.2", port 5432 failed: No route to host
+  	Is the server running on that host and accepting TCP/IP connections?
+  
+[0m13:17:19.106743 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": false, "command_wall_clock_time": 7.7225466, "process_in_blocks": "1432", "process_kernel_time": 0.136606, "process_mem_max_rss": "112216", "process_out_blocks": "0", "process_user_time": 0.992676}
+[0m13:17:19.107776 [debug] [MainThread]: Command `dbt test` failed at 13:17:19.107696 after 7.72 seconds
+[0m13:17:19.108498 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec9a25a80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec6b2d840>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4ec8bc17b0>]}
+[0m13:17:19.109219 [debug] [MainThread]: Flushing usage events
+[0m13:17:19.524883 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:10:41.742868 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1388798da0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f138925b9e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f138879af60>]}
+
+
+============================== 21:10:41.747619 | 1e699279-ced8-4628-941c-7aba37a7c07f ==============================
+[0m21:10:41.747619 [info ] [MainThread]: Running with dbt=1.9.4
+[0m21:10:41.748559 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'debug': 'False', 'warn_error': 'None', 'log_path': '/opt/global_economic_tracker/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m21:10:41.752793 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m21:10:41.753991 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.050018694, "process_in_blocks": "24440", "process_kernel_time": 0.176752, "process_mem_max_rss": "97748", "process_out_blocks": "0", "process_user_time": 1.109611}
+[0m21:10:41.754854 [debug] [MainThread]: Command `dbt run` failed at 21:10:41.754770 after 0.05 seconds
+[0m21:10:41.755576 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1388616ff0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f138823ce00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f13884c7e90>]}
+[0m21:10:41.756346 [debug] [MainThread]: Flushing usage events
+[0m21:10:42.316076 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:10:58.955106 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f09dd2a7ef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f09dee1b2c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f09de273920>]}
+
+
+============================== 21:10:58.960119 | a3cc6435-7511-43a1-b3a4-25f47082b489 ==============================
+[0m21:10:58.960119 [info ] [MainThread]: Running with dbt=1.9.4
+[0m21:10:58.961067 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'version_check': 'True', 'debug': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m21:10:58.965304 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m21:10:58.966517 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05131685, "process_in_blocks": "0", "process_kernel_time": 0.133177, "process_mem_max_rss": "97896", "process_out_blocks": "0", "process_user_time": 0.989318}
+[0m21:10:58.967484 [debug] [MainThread]: Command `dbt run` failed at 21:10:58.967396 after 0.05 seconds
+[0m21:10:58.968213 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f09dd2882c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f09e098af60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f09dcefc860>]}
+[0m21:10:58.968996 [debug] [MainThread]: Flushing usage events
+[0m21:10:59.517081 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:21:42.357093 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1cf8efe60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1d099e690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1ce9278c0>]}
+
+
+============================== 21:21:42.361298 | 4a5c7633-0d36-45b2-8875-ca175881b861 ==============================
+[0m21:21:42.361298 [info ] [MainThread]: Running with dbt=1.9.4
+[0m21:21:42.362309 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/opt/global_economic_tracker/logs', 'profiles_dir': '/opt/global_economic_tracker', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m21:21:42.366680 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m21:21:42.367862 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05242865, "process_in_blocks": "23336", "process_kernel_time": 0.115636, "process_mem_max_rss": "100164", "process_out_blocks": "1904", "process_user_time": 1.137096}
+[0m21:21:42.368712 [debug] [MainThread]: Command `dbt run` failed at 21:21:42.368626 after 0.05 seconds
+[0m21:21:42.369534 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1ce8ca630>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1ceb07710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1cf06fd70>]}
+[0m21:21:42.370398 [debug] [MainThread]: Flushing usage events
+[0m21:21:42.929847 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:22:00.058489 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2d67453aa0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2d67277c80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2d688c7770>]}
+
+
+============================== 21:22:00.063067 | 284f8a3f-39fe-479f-885e-b0eb76520f45 ==============================
+[0m21:22:00.063067 [info ] [MainThread]: Running with dbt=1.9.4
+[0m21:22:00.063937 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'version_check': 'True', 'profiles_dir': '/opt/global_economic_tracker', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m21:22:00.067989 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m21:22:00.069107 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.051935233, "process_in_blocks": "0", "process_kernel_time": 0.08517, "process_mem_max_rss": "97768", "process_out_blocks": "0", "process_user_time": 1.012582}
+[0m21:22:00.069964 [debug] [MainThread]: Command `dbt run` failed at 21:22:00.069879 after 0.05 seconds
+[0m21:22:00.070675 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2d67277c80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2d674532c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2d671bf5f0>]}
+[0m21:22:00.071409 [debug] [MainThread]: Flushing usage events
+[0m21:22:00.467109 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:04:53.460553 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efc73ebf590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efc72a07dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efc72a07e60>]}
+
+
+============================== 22:04:53.466902 | cbce85bc-419c-4ce5-97aa-00b28a6b8d92 ==============================
+[0m22:04:53.466902 [info ] [MainThread]: Running with dbt=1.9.4
+[0m22:04:53.468639 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/opt/global_economic_tracker/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m22:04:53.476160 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m22:04:53.477758 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.0728651, "process_in_blocks": "57760", "process_kernel_time": 0.188537, "process_mem_max_rss": "97652", "process_out_blocks": "0", "process_user_time": 1.071684}
+[0m22:04:53.478768 [debug] [MainThread]: Command `dbt run` failed at 22:04:53.478658 after 0.07 seconds
+[0m22:04:53.479794 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efc720c27b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efc728b3440>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efc728b1eb0>]}
+[0m22:04:53.481947 [debug] [MainThread]: Flushing usage events
+[0m22:04:53.839252 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:05:10.329530 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f87fd958bf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f87fdc9d3a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f87fd77b9e0>]}
+
+
+============================== 22:05:10.334804 | f8a826db-8bc2-4562-99e3-8702dba67526 ==============================
+[0m22:05:10.334804 [info ] [MainThread]: Running with dbt=1.9.4
+[0m22:05:10.335779 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'debug': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'send_anonymous_usage_stats': 'True'}
+[0m22:05:10.340096 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m22:05:10.341393 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05648243, "process_in_blocks": "0", "process_kernel_time": 0.112861, "process_mem_max_rss": "97896", "process_out_blocks": "0", "process_user_time": 0.98754}
+[0m22:05:10.342275 [debug] [MainThread]: Command `dbt run` failed at 22:05:10.342187 after 0.06 seconds
+[0m22:05:10.343019 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f87fd95af00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f87fe327b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f87fde95bb0>]}
+[0m22:05:10.343803 [debug] [MainThread]: Flushing usage events
+[0m22:05:10.889360 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:24:35.991665 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f47c2baf050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f47c2baf110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f47c2baf560>]}
+
+
+============================== 22:24:35.996682 | 20fe646b-339f-4796-8f33-23dd047af7c8 ==============================
+[0m22:24:35.996682 [info ] [MainThread]: Running with dbt=1.9.4
+[0m22:24:35.997602 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m22:24:36.001942 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m22:24:36.003086 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05281708, "process_in_blocks": "23336", "process_kernel_time": 0.205249, "process_mem_max_rss": "100124", "process_out_blocks": "1904", "process_user_time": 1.231499}
+[0m22:24:36.003957 [debug] [MainThread]: Command `dbt run` failed at 22:24:36.003870 after 0.05 seconds
+[0m22:24:36.004728 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f47c39d6cf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f47c2baf050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f47c327fce0>]}
+[0m22:24:36.005607 [debug] [MainThread]: Flushing usage events
+[0m22:24:36.374488 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:24:51.819922 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5982aab1d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f598188bec0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5980f04c50>]}
+
+
+============================== 22:24:51.824409 | 0d4cd9bb-54fc-47d3-adc5-969fe17f3138 ==============================
+[0m22:24:51.824409 [info ] [MainThread]: Running with dbt=1.9.4
+[0m22:24:51.825318 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'warn_error': 'None', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'send_anonymous_usage_stats': 'True'}
+[0m22:24:51.829561 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m22:24:51.830689 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.057359323, "process_in_blocks": "0", "process_kernel_time": 0.144868, "process_mem_max_rss": "97564", "process_out_blocks": "0", "process_user_time": 0.994763}
+[0m22:24:51.831552 [debug] [MainThread]: Command `dbt run` failed at 22:24:51.831464 after 0.06 seconds
+[0m22:24:51.832236 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f598113b1a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5980f07e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5980967bc0>]}
+[0m22:24:51.833045 [debug] [MainThread]: Flushing usage events
+[0m22:24:52.272338 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:30:48.240488 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7abfe0b980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7abf095e20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7abf097140>]}
+
+
+============================== 22:30:48.245371 | 401af692-61d7-48af-99d6-5ebc26c22390 ==============================
+[0m22:30:48.245371 [info ] [MainThread]: Running with dbt=1.9.4
+[0m22:30:48.246287 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'profiles_dir': '/opt/global_economic_tracker', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m22:30:48.250494 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m22:30:48.252080 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.054110356, "process_in_blocks": "57816", "process_kernel_time": 0.132557, "process_mem_max_rss": "100112", "process_out_blocks": "1904", "process_user_time": 1.117274}
+[0m22:30:48.253004 [debug] [MainThread]: Command `dbt run` failed at 22:30:48.252879 after 0.06 seconds
+[0m22:30:48.253736 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7abec38920>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7abed69670>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7abed69970>]}
+[0m22:30:48.254455 [debug] [MainThread]: Flushing usage events
+[0m22:30:48.815188 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:31:06.083454 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efed72b7740>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efed7e63fe0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efed7a9fd10>]}
+
+
+============================== 22:31:06.087708 | fd69ffe8-8efb-44de-9719-8bf8821de766 ==============================
+[0m22:31:06.087708 [info ] [MainThread]: Running with dbt=1.9.4
+[0m22:31:06.088700 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/opt/global_economic_tracker', 'log_path': '/opt/global_economic_tracker/logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m22:31:06.092835 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m22:31:06.093992 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05111775, "process_in_blocks": "0", "process_kernel_time": 0.094485, "process_mem_max_rss": "97828", "process_out_blocks": "0", "process_user_time": 0.973203}
+[0m22:31:06.094831 [debug] [MainThread]: Command `dbt run` failed at 22:31:06.094745 after 0.05 seconds
+[0m22:31:06.095548 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efed72b7740>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efed7a9e840>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efed71fc2f0>]}
+[0m22:31:06.096299 [debug] [MainThread]: Flushing usage events
+[0m22:31:06.633467 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m01:00:03.661124 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f80735978f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8072ab05f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8073e77080>]}
+
+
+============================== 01:00:03.665892 | 81a3923b-d90e-47a1-9480-06120c812ebf ==============================
+[0m01:00:03.665892 [info ] [MainThread]: Running with dbt=1.9.4
+[0m01:00:03.667000 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m01:00:03.670899 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m01:00:03.672435 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.06173831, "process_in_blocks": "57848", "process_kernel_time": 0.240382, "process_mem_max_rss": "97568", "process_out_blocks": "0", "process_user_time": 1.153834}
+[0m01:00:03.673205 [debug] [MainThread]: Command `dbt run` failed at 01:00:03.673126 after 0.06 seconds
+[0m01:00:03.673884 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f80735978f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8072cd5520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8072b39010>]}
+[0m01:00:03.674590 [debug] [MainThread]: Flushing usage events
+[0m01:00:04.294342 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m01:00:21.178588 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3205e5c9b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3207fb2390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3205afe000>]}
+
+
+============================== 01:00:21.182566 | cc32556b-9c42-4db0-9658-1467b4303c40 ==============================
+[0m01:00:21.182566 [info ] [MainThread]: Running with dbt=1.9.4
+[0m01:00:21.183451 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'debug': 'False', 'version_check': 'True', 'log_path': '/opt/global_economic_tracker/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'send_anonymous_usage_stats': 'True'}
+[0m01:00:21.187239 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m01:00:21.188309 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.04763619, "process_in_blocks": "0", "process_kernel_time": 0.070365, "process_mem_max_rss": "97524", "process_out_blocks": "0", "process_user_time": 0.965005}
+[0m01:00:21.189112 [debug] [MainThread]: Command `dbt run` failed at 01:00:21.189031 after 0.05 seconds
+[0m01:00:21.189891 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3205e5e780>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f32072bf380>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3205b475f0>]}
+[0m01:00:21.190633 [debug] [MainThread]: Flushing usage events
+[0m01:00:21.746578 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m01:07:55.904373 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efd4da945f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efd4db32600>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efd4dbc1af0>]}
+
+
+============================== 01:07:55.908901 | c98a6113-40a8-4161-9853-85e166a5ffdb ==============================
+[0m01:07:55.908901 [info ] [MainThread]: Running with dbt=1.9.4
+[0m01:07:55.909800 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/opt/global_economic_tracker/logs', 'warn_error': 'None', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'send_anonymous_usage_stats': 'True'}
+[0m01:07:55.913588 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m01:07:55.914804 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.049585123, "process_in_blocks": "57832", "process_kernel_time": 0.162476, "process_mem_max_rss": "99872", "process_out_blocks": "1904", "process_user_time": 1.202328}
+[0m01:07:55.915598 [debug] [MainThread]: Command `dbt run` failed at 01:07:55.915517 after 0.05 seconds
+[0m01:07:55.916266 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efd4dbc0950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efd4db2c380>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efd4db2ca40>]}
+[0m01:07:55.916978 [debug] [MainThread]: Flushing usage events
+[0m01:07:56.542578 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m01:08:13.299991 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7580c52d80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f758027a1e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75805db560>]}
+
+
+============================== 01:08:13.303987 | fa16f132-b621-4616-81d5-52b2c9292830 ==============================
+[0m01:08:13.303987 [info ] [MainThread]: Running with dbt=1.9.4
+[0m01:08:13.304916 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/opt/global_economic_tracker/logs', 'warn_error': 'None', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'send_anonymous_usage_stats': 'True'}
+[0m01:08:13.308751 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m01:08:13.309970 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.048597917, "process_in_blocks": "0", "process_kernel_time": 0.120087, "process_mem_max_rss": "97784", "process_out_blocks": "0", "process_user_time": 0.940686}
+[0m01:08:13.310742 [debug] [MainThread]: Command `dbt run` failed at 01:08:13.310663 after 0.05 seconds
+[0m01:08:13.311400 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7580039460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75805d9550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f75810ba270>]}
+[0m01:08:13.312117 [debug] [MainThread]: Flushing usage events
+[0m01:08:13.930439 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:50:22.709378 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f94ba69e5d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f94b8e74e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f94b8e77380>]}
+
+
+============================== 03:50:22.713994 | 3dfc00f8-57b9-4b6b-9f86-d5249d9fc9d6 ==============================
+[0m03:50:22.713994 [info ] [MainThread]: Running with dbt=1.9.4
+[0m03:50:22.714903 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'profiles_dir': '/opt/global_economic_tracker', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m03:50:22.718901 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m03:50:22.720200 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05861588, "process_in_blocks": "57832", "process_kernel_time": 0.2356, "process_mem_max_rss": "100112", "process_out_blocks": "1904", "process_user_time": 1.020933}
+[0m03:50:22.721027 [debug] [MainThread]: Command `dbt run` failed at 03:50:22.720911 after 0.06 seconds
+[0m03:50:22.721785 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f94ba69e5d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f94b8ccfd10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f94b8607cb0>]}
+[0m03:50:22.722513 [debug] [MainThread]: Flushing usage events
+[0m03:50:23.337282 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:50:40.180128 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f26435f59d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2643c6f710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f26454a2840>]}
+
+
+============================== 03:50:40.184411 | 1e17e4d8-c466-48b8-b8ac-ec5600ec7a5e ==============================
+[0m03:50:40.184411 [info ] [MainThread]: Running with dbt=1.9.4
+[0m03:50:40.185334 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'profiles_dir': '/opt/global_economic_tracker', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'log_format': 'default', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m03:50:40.189246 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m03:50:40.190348 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.048112217, "process_in_blocks": "0", "process_kernel_time": 0.070417, "process_mem_max_rss": "97704", "process_out_blocks": "0", "process_user_time": 0.975788}
+[0m03:50:40.191113 [debug] [MainThread]: Command `dbt run` failed at 03:50:40.191031 after 0.05 seconds
+[0m03:50:40.191778 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f26443e6ab0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f264329f890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2645564260>]}
+[0m03:50:40.192464 [debug] [MainThread]: Flushing usage events
+[0m03:50:40.575749 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:57:55.145486 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0458dab320>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f045718b980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f04581d19a0>]}
+
+
+============================== 03:57:55.149998 | f9364235-53b5-4d1f-b233-dd2fa32341f7 ==============================
+[0m03:57:55.149998 [info ] [MainThread]: Running with dbt=1.9.4
+[0m03:57:55.150941 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/opt/global_economic_tracker/logs', 'debug': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m03:57:55.154784 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m03:57:55.155940 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05064487, "process_in_blocks": "23336", "process_kernel_time": 0.12939, "process_mem_max_rss": "100280", "process_out_blocks": "1904", "process_user_time": 1.104799}
+[0m03:57:55.156752 [debug] [MainThread]: Command `dbt run` failed at 03:57:55.156676 after 0.05 seconds
+[0m03:57:55.157416 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0456f593d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f04574791c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f04581d19a0>]}
+[0m03:57:55.158117 [debug] [MainThread]: Flushing usage events
+[0m03:57:55.596698 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:58:12.843092 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9dbe4facf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9dbe873bf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9dc043e930>]}
+
+
+============================== 03:58:12.847153 | daab68fc-5d12-472c-b83b-d2f7e193da67 ==============================
+[0m03:58:12.847153 [info ] [MainThread]: Running with dbt=1.9.4
+[0m03:58:12.848200 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'debug': 'False', 'version_check': 'True', 'log_path': '/opt/global_economic_tracker/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /opt/global_economic_tracker', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m03:58:12.852097 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m03:58:12.853121 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.04757736, "process_in_blocks": "0", "process_kernel_time": 0.03013, "process_mem_max_rss": "97852", "process_out_blocks": "0", "process_user_time": 1.044528}
+[0m03:58:12.853885 [debug] [MainThread]: Command `dbt run` failed at 03:58:12.853809 after 0.05 seconds
+[0m03:58:12.854536 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9dbe320530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9dbdf60050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f9dbe4613a0>]}
+[0m03:58:12.855234 [debug] [MainThread]: Flushing usage events
+[0m03:58:13.284648 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:17:56.249465 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2e087a3bc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2e0a989c70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2e0a616b70>]}
+
+
+============================== 04:17:56.253429 | ce5292b1-3004-4354-90c4-538a3bd291f0 ==============================
+[0m04:17:56.253429 [info ] [MainThread]: Running with dbt=1.9.4
+[0m04:17:56.254423 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'fail_fast': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select path:models/staging', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m04:17:56.258784 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m04:17:56.259958 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05038969, "process_in_blocks": "23336", "process_kernel_time": 0.148253, "process_mem_max_rss": "100104", "process_out_blocks": "1904", "process_user_time": 1.116844}
+[0m04:17:56.260775 [debug] [MainThread]: Command `dbt run` failed at 04:17:56.260693 after 0.05 seconds
+[0m04:17:56.261454 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2e087a3bc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2e081e2840>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f2e085c9130>]}
+[0m04:17:56.262182 [debug] [MainThread]: Flushing usage events
+[0m04:17:56.804847 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:18:13.905096 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5732b30b60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5732b33830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5732783ef0>]}
+
+
+============================== 04:18:13.909774 | a45673fe-e53e-45b1-b8fd-8aca474660b0 ==============================
+[0m04:18:13.909774 [info ] [MainThread]: Running with dbt=1.9.4
+[0m04:18:13.910816 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/opt/global_economic_tracker', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt run --select path:models/staging', 'send_anonymous_usage_stats': 'True'}
+[0m04:18:13.915018 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'global_economic_tracker'
+[0m04:18:13.916050 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05016949, "process_in_blocks": "0", "process_kernel_time": 0.109963, "process_mem_max_rss": "97656", "process_out_blocks": "0", "process_user_time": 0.949684}
+[0m04:18:13.916851 [debug] [MainThread]: Command `dbt run` failed at 04:18:13.916770 after 0.05 seconds
+[0m04:18:13.917529 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f57328d5700>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5732fb2210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f5732a74110>]}
+[0m04:18:13.918274 [debug] [MainThread]: Flushing usage events
+[0m04:18:14.474221 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:36:43.210709 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244dd88e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244e5baae0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244e2abdd0>]}
+
+
+============================== 04:36:43.214631 | cf0a20d2-03a1-44b4-868f-f1ab5bfb68e7 ==============================
+[0m04:36:43.214631 [info ] [MainThread]: Running with dbt=1.9.4
+[0m04:36:43.215698 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/opt/global_economic_tracker/logs', 'profiles_dir': '/home/airflow/.dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt run --select path:models/staging --profiles-dir /home/airflow/.dbt', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m04:36:43.385567 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'cf0a20d2-03a1-44b4-868f-f1ab5bfb68e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244e19ab70>]}
+[0m04:36:43.421275 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'cf0a20d2-03a1-44b4-868f-f1ab5bfb68e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244d8917f0>]}
+[0m04:36:43.422573 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m04:36:43.486405 [debug] [MainThread]: checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
+[0m04:36:44.568059 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m04:36:44.568991 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m04:36:44.592979 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'cf0a20d2-03a1-44b4-868f-f1ab5bfb68e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244d760cb0>]}
+[0m04:36:44.649252 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/global_economic_tracker/target/manifest.json
+[0m04:36:44.654971 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/global_economic_tracker/target/semantic_manifest.json
+[0m04:36:44.687435 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'cf0a20d2-03a1-44b4-868f-f1ab5bfb68e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244c386ed0>]}
+[0m04:36:44.688236 [info ] [MainThread]: Found 4 models, 22 data tests, 549 macros
+[0m04:36:44.689031 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'cf0a20d2-03a1-44b4-868f-f1ab5bfb68e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244cb2ee10>]}
+[0m04:36:44.693698 [info ] [MainThread]: 
+[0m04:36:44.694501 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m04:36:44.695272 [info ] [MainThread]: 
+[0m04:36:44.696293 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m04:36:44.700154 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m04:36:44.721775 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m04:36:44.722513 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m04:36:44.723215 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:36:44.727076 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.004 seconds
+[0m04:36:44.728214 [debug] [ThreadPool]: On list_airflow: Close
+[0m04:36:44.730121 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_airflow, now list_airflow_public)
+[0m04:36:44.734048 [debug] [ThreadPool]: Using postgres connection "list_airflow_public"
+[0m04:36:44.734851 [debug] [ThreadPool]: On list_airflow_public: BEGIN
+[0m04:36:44.735547 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m04:36:44.738328 [debug] [ThreadPool]: SQL status: BEGIN in 0.003 seconds
+[0m04:36:44.739055 [debug] [ThreadPool]: Using postgres connection "list_airflow_public"
+[0m04:36:44.739769 [debug] [ThreadPool]: On list_airflow_public: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "connection_name": "list_airflow_public"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m04:36:44.744030 [debug] [ThreadPool]: SQL status: SELECT 49 in 0.004 seconds
+[0m04:36:44.745497 [debug] [ThreadPool]: On list_airflow_public: ROLLBACK
+[0m04:36:44.746481 [debug] [ThreadPool]: On list_airflow_public: Close
+[0m04:36:44.752492 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:44.753213 [debug] [MainThread]: On master: BEGIN
+[0m04:36:44.753936 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m04:36:44.756099 [debug] [MainThread]: SQL status: BEGIN in 0.002 seconds
+[0m04:36:44.756815 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:44.757539 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m04:36:44.760559 [debug] [MainThread]: SQL status: SELECT 0 in 0.002 seconds
+[0m04:36:44.761698 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'cf0a20d2-03a1-44b4-868f-f1ab5bfb68e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244c313da0>]}
+[0m04:36:44.762455 [debug] [MainThread]: On master: ROLLBACK
+[0m04:36:44.763361 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:44.764095 [debug] [MainThread]: On master: BEGIN
+[0m04:36:44.765040 [debug] [MainThread]: SQL status: BEGIN in 0.000 seconds
+[0m04:36:44.765799 [debug] [MainThread]: On master: COMMIT
+[0m04:36:44.766560 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:44.767283 [debug] [MainThread]: On master: COMMIT
+[0m04:36:44.768078 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m04:36:44.768771 [debug] [MainThread]: On master: Close
+[0m04:36:44.774746 [debug] [Thread-1 (]: Began running node model.global_economic_tracker.stg_commodity_returns
+[0m04:36:44.775058 [debug] [Thread-2 (]: Began running node model.global_economic_tracker.stg_index_returns
+[0m04:36:44.775771 [info ] [Thread-1 (]: 1 of 2 START sql table model public.stg_commodity_returns ...................... [RUN]
+[0m04:36:44.776649 [info ] [Thread-2 (]: 2 of 2 START sql table model public.stg_index_returns .......................... [RUN]
+[0m04:36:44.777400 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_airflow_public, now model.global_economic_tracker.stg_commodity_returns)
+[0m04:36:44.778253 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.global_economic_tracker.stg_index_returns'
+[0m04:36:44.779039 [debug] [Thread-1 (]: Began compiling node model.global_economic_tracker.stg_commodity_returns
+[0m04:36:44.779773 [debug] [Thread-2 (]: Began compiling node model.global_economic_tracker.stg_index_returns
+[0m04:36:44.783664 [debug] [Thread-1 (]: Writing injected SQL for node "model.global_economic_tracker.stg_commodity_returns"
+[0m04:36:44.785874 [debug] [Thread-2 (]: Writing injected SQL for node "model.global_economic_tracker.stg_index_returns"
+[0m04:36:44.790375 [debug] [Thread-1 (]: Began executing node model.global_economic_tracker.stg_commodity_returns
+[0m04:36:44.791027 [debug] [Thread-2 (]: Began executing node model.global_economic_tracker.stg_index_returns
+[0m04:36:44.811001 [debug] [Thread-1 (]: Writing runtime sql for node "model.global_economic_tracker.stg_commodity_returns"
+[0m04:36:44.812774 [debug] [Thread-2 (]: Writing runtime sql for node "model.global_economic_tracker.stg_index_returns"
+[0m04:36:44.817155 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_returns"
+[0m04:36:44.818187 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_returns"
+[0m04:36:44.818462 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_returns: BEGIN
+[0m04:36:44.819244 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_returns: BEGIN
+[0m04:36:44.820036 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m04:36:44.820802 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m04:36:44.823963 [debug] [Thread-1 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:44.824534 [debug] [Thread-2 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:44.824997 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_returns"
+[0m04:36:44.825766 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_returns"
+[0m04:36:44.826549 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_returns: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_commodity_returns"} */
+
+  
+    
+
+  create  table "airflow"."public"."stg_commodity_returns__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+select
+    'commodity' as type,
+    ticker,
+    timestamp,
+    price,
+    lag(price) over (partition by ticker order by timestamp) as prev_price,
+    coalesce((price - lag(price) over (partition by ticker order by timestamp)) / lag(price) over (partition by ticker order by timestamp), 0) as daily_return
+from public.commodity_prices
+  );
+  
+[0m04:36:44.827367 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_returns: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_index_returns"} */
+
+  
+    
+
+  create  table "airflow"."public"."stg_index_returns__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+select
+    'index' as type,
+    country,
+    ticker,
+    timestamp,
+    price,
+    lag(price) over (partition by ticker order by timestamp) as prev_price,
+    coalesce((price - lag(price) over (partition by ticker order by timestamp)) / lag(price) over (partition by ticker order by timestamp), 0) as daily_return
+from public.index_prices
+  );
+  
+[0m04:36:44.842566 [debug] [Thread-2 (]: SQL status: SELECT 0 in 0.014 seconds
+[0m04:36:44.848158 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_returns"
+[0m04:36:44.848413 [debug] [Thread-1 (]: SQL status: SELECT 517 in 0.020 seconds
+[0m04:36:44.849050 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_returns: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_index_returns"} */
+alter table "airflow"."public"."stg_index_returns" rename to "stg_index_returns__dbt_backup"
+[0m04:36:44.851147 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_returns"
+[0m04:36:44.852383 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m04:36:44.852806 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_returns: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_commodity_returns"} */
+alter table "airflow"."public"."stg_commodity_returns" rename to "stg_commodity_returns__dbt_backup"
+[0m04:36:44.854669 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_returns"
+[0m04:36:44.855878 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m04:36:44.856335 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_returns: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_index_returns"} */
+alter table "airflow"."public"."stg_index_returns__dbt_tmp" rename to "stg_index_returns"
+[0m04:36:44.858234 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_returns"
+[0m04:36:44.859190 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m04:36:44.859975 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_returns: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_commodity_returns"} */
+alter table "airflow"."public"."stg_commodity_returns__dbt_tmp" rename to "stg_commodity_returns"
+[0m04:36:44.861494 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_returns"
+[0m04:36:44.862443 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m04:36:44.863022 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_returns: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_index_returns"} */
+
+        CREATE INDEX IF NOT EXISTS idx_index_returns_ticker_ts ON "airflow"."public"."stg_index_returns"(ticker, timestamp)
+      
+[0m04:36:44.864467 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_returns"
+[0m04:36:44.865777 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_returns: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_commodity_returns"} */
+
+        CREATE INDEX IF NOT EXISTS idx_returns_ticker_ts ON "airflow"."public"."stg_commodity_returns"(ticker, timestamp)
+      
+[0m04:36:44.868142 [debug] [Thread-2 (]: SQL status: CREATE INDEX in 0.003 seconds
+[0m04:36:44.876959 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_returns: COMMIT
+[0m04:36:44.877222 [debug] [Thread-1 (]: SQL status: CREATE INDEX in 0.011 seconds
+[0m04:36:44.877824 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_returns"
+[0m04:36:44.879136 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_returns: COMMIT
+[0m04:36:44.879909 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_returns: COMMIT
+[0m04:36:44.880665 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_returns"
+[0m04:36:44.882000 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_returns: COMMIT
+[0m04:36:44.883241 [debug] [Thread-2 (]: SQL status: COMMIT in 0.002 seconds
+[0m04:36:44.886836 [debug] [Thread-2 (]: Applying DROP to: "airflow"."public"."stg_index_returns__dbt_backup"
+[0m04:36:44.887089 [debug] [Thread-1 (]: SQL status: COMMIT in 0.004 seconds
+[0m04:36:44.890113 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_returns"
+[0m04:36:44.891825 [debug] [Thread-1 (]: Applying DROP to: "airflow"."public"."stg_commodity_returns__dbt_backup"
+[0m04:36:44.892549 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_returns: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_index_returns"} */
+drop table if exists "airflow"."public"."stg_index_returns__dbt_backup" cascade
+[0m04:36:44.893522 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_returns"
+[0m04:36:44.894962 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_returns: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_commodity_returns"} */
+drop table if exists "airflow"."public"."stg_commodity_returns__dbt_backup" cascade
+[0m04:36:44.898627 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.003 seconds
+[0m04:36:44.899346 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.005 seconds
+[0m04:36:44.900711 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_returns: Close
+[0m04:36:44.902116 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_returns: Close
+[0m04:36:44.903966 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'cf0a20d2-03a1-44b4-868f-f1ab5bfb68e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244f7ed250>]}
+[0m04:36:44.904373 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'cf0a20d2-03a1-44b4-868f-f1ab5bfb68e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244c3875f0>]}
+[0m04:36:44.905109 [info ] [Thread-1 (]: 1 of 2 OK created sql table model public.stg_commodity_returns ................. [[32mSELECT 517[0m in 0.13s]
+[0m04:36:44.906212 [info ] [Thread-2 (]: 2 of 2 OK created sql table model public.stg_index_returns ..................... [[32mSELECT 0[0m in 0.13s]
+[0m04:36:44.907094 [debug] [Thread-1 (]: Finished running node model.global_economic_tracker.stg_commodity_returns
+[0m04:36:44.907917 [debug] [Thread-2 (]: Finished running node model.global_economic_tracker.stg_index_returns
+[0m04:36:44.910548 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:44.911363 [debug] [MainThread]: On master: BEGIN
+[0m04:36:44.912077 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m04:36:44.914261 [debug] [MainThread]: SQL status: BEGIN in 0.002 seconds
+[0m04:36:44.915097 [debug] [MainThread]: On master: COMMIT
+[0m04:36:44.915852 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:44.916548 [debug] [MainThread]: On master: COMMIT
+[0m04:36:44.917414 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m04:36:44.918149 [debug] [MainThread]: On master: Close
+[0m04:36:44.918975 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:36:44.919776 [debug] [MainThread]: Connection 'model.global_economic_tracker.stg_commodity_returns' was properly closed.
+[0m04:36:44.920465 [debug] [MainThread]: Connection 'model.global_economic_tracker.stg_index_returns' was properly closed.
+[0m04:36:44.921208 [info ] [MainThread]: 
+[0m04:36:44.922022 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 0.23 seconds (0.23s).
+[0m04:36:44.923241 [debug] [MainThread]: Command end result
+[0m04:36:44.952724 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/global_economic_tracker/target/manifest.json
+[0m04:36:44.956673 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/global_economic_tracker/target/semantic_manifest.json
+[0m04:36:44.963442 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/global_economic_tracker/target/run_results.json
+[0m04:36:44.964219 [info ] [MainThread]: 
+[0m04:36:44.965299 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m04:36:44.966100 [info ] [MainThread]: 
+[0m04:36:44.966907 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
+[0m04:36:44.967992 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 1.7942865, "process_in_blocks": "36848", "process_kernel_time": 0.284755, "process_mem_max_rss": "124304", "process_out_blocks": "2352", "process_user_time": 1.472874}
+[0m04:36:44.968824 [debug] [MainThread]: Command `dbt run` succeeded at 04:36:44.968739 after 1.80 seconds
+[0m04:36:44.969690 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244dbbfef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244bfee2a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f244ef819a0>]}
+[0m04:36:44.970435 [debug] [MainThread]: Flushing usage events
+[0m04:36:45.344265 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:36:46.872602 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd9813a10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd8f79580>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd917a810>]}
+
+
+============================== 04:36:46.876765 | bbe8ccff-e089-4f90-bf7b-d626a96b23be ==============================
+[0m04:36:46.876765 [info ] [MainThread]: Running with dbt=1.9.4
+[0m04:36:46.877698 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/airflow/.dbt', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/opt/global_economic_tracker/logs', 'debug': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select path:models/analytics --profiles-dir /home/airflow/.dbt', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m04:36:47.008104 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'bbe8ccff-e089-4f90-bf7b-d626a96b23be', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd8c0e720>]}
+[0m04:36:47.046759 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'bbe8ccff-e089-4f90-bf7b-d626a96b23be', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd96a8ec0>]}
+[0m04:36:47.047695 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m04:36:47.102383 [debug] [MainThread]: checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
+[0m04:36:47.992665 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m04:36:47.993570 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m04:36:48.016428 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'bbe8ccff-e089-4f90-bf7b-d626a96b23be', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd8e26240>]}
+[0m04:36:48.071540 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/global_economic_tracker/target/manifest.json
+[0m04:36:48.077060 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/global_economic_tracker/target/semantic_manifest.json
+[0m04:36:48.092176 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'bbe8ccff-e089-4f90-bf7b-d626a96b23be', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd7126810>]}
+[0m04:36:48.092939 [info ] [MainThread]: Found 4 models, 22 data tests, 549 macros
+[0m04:36:48.093676 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'bbe8ccff-e089-4f90-bf7b-d626a96b23be', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd7919400>]}
+[0m04:36:48.098175 [info ] [MainThread]: 
+[0m04:36:48.098953 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m04:36:48.099659 [info ] [MainThread]: 
+[0m04:36:48.100502 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m04:36:48.103933 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow'
+[0m04:36:48.118998 [debug] [ThreadPool]: Using postgres connection "list_airflow"
+[0m04:36:48.119766 [debug] [ThreadPool]: On list_airflow: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "connection_name": "list_airflow"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m04:36:48.120479 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:36:48.123261 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.003 seconds
+[0m04:36:48.124378 [debug] [ThreadPool]: On list_airflow: Close
+[0m04:36:48.125749 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_airflow, now list_airflow_public)
+[0m04:36:48.128884 [debug] [ThreadPool]: Using postgres connection "list_airflow_public"
+[0m04:36:48.129734 [debug] [ThreadPool]: On list_airflow_public: BEGIN
+[0m04:36:48.130388 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m04:36:48.132345 [debug] [ThreadPool]: SQL status: BEGIN in 0.002 seconds
+[0m04:36:48.133000 [debug] [ThreadPool]: Using postgres connection "list_airflow_public"
+[0m04:36:48.133665 [debug] [ThreadPool]: On list_airflow_public: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "connection_name": "list_airflow_public"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m04:36:48.135491 [debug] [ThreadPool]: SQL status: SELECT 49 in 0.001 seconds
+[0m04:36:48.136969 [debug] [ThreadPool]: On list_airflow_public: ROLLBACK
+[0m04:36:48.137733 [debug] [ThreadPool]: On list_airflow_public: Close
+[0m04:36:48.143143 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:48.143820 [debug] [MainThread]: On master: BEGIN
+[0m04:36:48.144493 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m04:36:48.146501 [debug] [MainThread]: SQL status: BEGIN in 0.002 seconds
+[0m04:36:48.147586 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:48.148285 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m04:36:48.150201 [debug] [MainThread]: SQL status: SELECT 0 in 0.001 seconds
+[0m04:36:48.151546 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'bbe8ccff-e089-4f90-bf7b-d626a96b23be', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd5dba570>]}
+[0m04:36:48.152417 [debug] [MainThread]: On master: ROLLBACK
+[0m04:36:48.153196 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:48.153868 [debug] [MainThread]: On master: BEGIN
+[0m04:36:48.154786 [debug] [MainThread]: SQL status: BEGIN in 0.000 seconds
+[0m04:36:48.155538 [debug] [MainThread]: On master: COMMIT
+[0m04:36:48.156211 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:48.156864 [debug] [MainThread]: On master: COMMIT
+[0m04:36:48.157631 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m04:36:48.158294 [debug] [MainThread]: On master: Close
+[0m04:36:48.163341 [debug] [Thread-1 (]: Began running node model.global_economic_tracker.stg_commodity_metrics
+[0m04:36:48.163757 [debug] [Thread-2 (]: Began running node model.global_economic_tracker.stg_index_metrics
+[0m04:36:48.164417 [info ] [Thread-1 (]: 1 of 2 START sql table model public.stg_commodity_metrics ...................... [RUN]
+[0m04:36:48.165162 [info ] [Thread-2 (]: 2 of 2 START sql table model public.stg_index_metrics .......................... [RUN]
+[0m04:36:48.165871 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_airflow_public, now model.global_economic_tracker.stg_commodity_metrics)
+[0m04:36:48.166659 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.global_economic_tracker.stg_index_metrics'
+[0m04:36:48.167381 [debug] [Thread-1 (]: Began compiling node model.global_economic_tracker.stg_commodity_metrics
+[0m04:36:48.168118 [debug] [Thread-2 (]: Began compiling node model.global_economic_tracker.stg_index_metrics
+[0m04:36:48.172140 [debug] [Thread-1 (]: Writing injected SQL for node "model.global_economic_tracker.stg_commodity_metrics"
+[0m04:36:48.174184 [debug] [Thread-2 (]: Writing injected SQL for node "model.global_economic_tracker.stg_index_metrics"
+[0m04:36:48.178397 [debug] [Thread-1 (]: Began executing node model.global_economic_tracker.stg_commodity_metrics
+[0m04:36:48.185080 [debug] [Thread-2 (]: Began executing node model.global_economic_tracker.stg_index_metrics
+[0m04:36:48.198759 [debug] [Thread-1 (]: Writing runtime sql for node "model.global_economic_tracker.stg_commodity_metrics"
+[0m04:36:48.200515 [debug] [Thread-2 (]: Writing runtime sql for node "model.global_economic_tracker.stg_index_metrics"
+[0m04:36:48.204996 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_metrics"
+[0m04:36:48.205793 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_metrics: BEGIN
+[0m04:36:48.206050 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_metrics"
+[0m04:36:48.206631 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m04:36:48.207331 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_metrics: BEGIN
+[0m04:36:48.208790 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m04:36:48.209718 [debug] [Thread-1 (]: SQL status: BEGIN in 0.003 seconds
+[0m04:36:48.210414 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_metrics"
+[0m04:36:48.210926 [debug] [Thread-2 (]: SQL status: BEGIN in 0.002 seconds
+[0m04:36:48.211350 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_commodity_metrics"} */
+
+  
+    
+
+  create  table "airflow"."public"."stg_commodity_metrics__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with base as (
+    select
+        *,
+        row_number() over (partition by ticker order by timestamp) as rn
+    from "airflow"."public"."stg_commodity_returns"
+),
+
+rolling as (
+    select
+        ticker,
+        timestamp,
+        avg(daily_return) over (
+            partition by ticker
+            order by rn
+            rows between 19 preceding and current row
+        ) as rolling_avg_mo,
+
+        avg(daily_return) OVER (
+            partition by ticker
+            order by timestamp
+            rows between 6 preceding and current row
+        ) as weekly_avg_return,
+
+        stddev(daily_return) over (
+            partition by ticker
+            order by rn
+            rows between 19 preceding and current row
+        ) as rolling_volatility_mo,
+
+        case
+            when daily_return > 0 then 'up'
+            when daily_return < 0 then 'down'
+            else 'flat'
+        end as trend,
+
+        daily_return
+
+    from base
+)
+
+select
+    *,
+    rolling_avg_mo / nullif(rolling_volatility_mo, 0) as sharpe_mo,
+    (daily_return - rolling_avg_mo) / nullif(rolling_volatility_mo, 0) as z_score_mo
+from rolling
+where rolling_avg_mo is not null
+  );
+  
+[0m04:36:48.212110 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_metrics"
+[0m04:36:48.213403 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_index_metrics"} */
+
+  
+    
+
+  create  table "airflow"."public"."stg_index_metrics__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with base as (
+    select
+        *,
+        row_number() over (partition by ticker order by timestamp) as rn
+    from "airflow"."public"."stg_index_returns"
+),
+
+rolling as (
+    select
+        ticker,
+        timestamp,
+        avg(daily_return) over (
+            partition by ticker
+            order by rn
+            rows between 19 preceding and current row
+        ) as rolling_avg_mo,
+
+        avg(daily_return) OVER (
+            partition by ticker
+            order by timestamp
+            rows between 6 preceding and current row
+        ) as weekly_avg_return,
+
+        stddev(daily_return) over (
+            partition by ticker
+            order by rn
+            rows between 19 preceding and current row
+        ) as rolling_volatility_mo,
+
+        case
+            when daily_return > 0 then 'up'
+            when daily_return < 0 then 'down'
+            else 'flat'
+        end as trend,
+
+        daily_return
+
+    from base
+)
+
+select
+    *,
+    rolling_avg_mo / nullif(rolling_volatility_mo, 0) as sharpe_mo,
+    (daily_return - rolling_avg_mo) / nullif(rolling_volatility_mo, 0) as z_score_mo
+from rolling
+where rolling_avg_mo is not null
+  );
+  
+[0m04:36:48.218802 [debug] [Thread-1 (]: SQL status: SELECT 517 in 0.006 seconds
+[0m04:36:48.219344 [debug] [Thread-2 (]: SQL status: SELECT 0 in 0.005 seconds
+[0m04:36:48.225091 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_metrics"
+[0m04:36:48.227098 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_metrics"
+[0m04:36:48.227849 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_commodity_metrics"} */
+alter table "airflow"."public"."stg_commodity_metrics" rename to "stg_commodity_metrics__dbt_backup"
+[0m04:36:48.228616 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_index_metrics"} */
+alter table "airflow"."public"."stg_index_metrics" rename to "stg_index_metrics__dbt_backup"
+[0m04:36:48.229790 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m04:36:48.230541 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m04:36:48.232281 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_metrics"
+[0m04:36:48.234265 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_metrics"
+[0m04:36:48.234968 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_commodity_metrics"} */
+alter table "airflow"."public"."stg_commodity_metrics__dbt_tmp" rename to "stg_commodity_metrics"
+[0m04:36:48.235639 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_index_metrics"} */
+alter table "airflow"."public"."stg_index_metrics__dbt_tmp" rename to "stg_index_metrics"
+[0m04:36:48.236545 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m04:36:48.237264 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m04:36:48.238453 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_metrics"
+[0m04:36:48.240122 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_metrics"
+[0m04:36:48.240864 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_commodity_metrics"} */
+
+        CREATE INDEX IF NOT EXISTS idx_commodity_ticker_ts ON "airflow"."public"."stg_commodity_metrics"(ticker, timestamp)
+      
+[0m04:36:48.241618 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_index_metrics"} */
+
+        CREATE INDEX IF NOT EXISTS idx_index_ticker_ts ON "airflow"."public"."stg_index_metrics"(ticker, timestamp)
+      
+[0m04:36:48.242623 [debug] [Thread-1 (]: SQL status: CREATE INDEX in 0.000 seconds
+[0m04:36:48.243218 [debug] [Thread-2 (]: SQL status: CREATE INDEX in 0.000 seconds
+[0m04:36:48.251669 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_metrics: COMMIT
+[0m04:36:48.252804 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_metrics: COMMIT
+[0m04:36:48.253555 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_metrics"
+[0m04:36:48.254284 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_metrics"
+[0m04:36:48.255001 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_metrics: COMMIT
+[0m04:36:48.255747 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_metrics: COMMIT
+[0m04:36:48.257731 [debug] [Thread-1 (]: SQL status: COMMIT in 0.001 seconds
+[0m04:36:48.261310 [debug] [Thread-1 (]: Applying DROP to: "airflow"."public"."stg_commodity_metrics__dbt_backup"
+[0m04:36:48.261562 [debug] [Thread-2 (]: SQL status: COMMIT in 0.004 seconds
+[0m04:36:48.264633 [debug] [Thread-1 (]: Using postgres connection "model.global_economic_tracker.stg_commodity_metrics"
+[0m04:36:48.266766 [debug] [Thread-2 (]: Applying DROP to: "airflow"."public"."stg_index_metrics__dbt_backup"
+[0m04:36:48.267488 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_commodity_metrics"} */
+drop table if exists "airflow"."public"."stg_commodity_metrics__dbt_backup" cascade
+[0m04:36:48.268424 [debug] [Thread-2 (]: Using postgres connection "model.global_economic_tracker.stg_index_metrics"
+[0m04:36:48.269699 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "model.global_economic_tracker.stg_index_metrics"} */
+drop table if exists "airflow"."public"."stg_index_metrics__dbt_backup" cascade
+[0m04:36:48.271227 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.002 seconds
+[0m04:36:48.272953 [debug] [Thread-1 (]: On model.global_economic_tracker.stg_commodity_metrics: Close
+[0m04:36:48.273194 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.003 seconds
+[0m04:36:48.274668 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'bbe8ccff-e089-4f90-bf7b-d626a96b23be', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcddad69040>]}
+[0m04:36:48.275608 [debug] [Thread-2 (]: On model.global_economic_tracker.stg_index_metrics: Close
+[0m04:36:48.276463 [info ] [Thread-1 (]: 1 of 2 OK created sql table model public.stg_commodity_metrics ................. [[32mSELECT 517[0m in 0.11s]
+[0m04:36:48.277302 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'bbe8ccff-e089-4f90-bf7b-d626a96b23be', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd5cb17c0>]}
+[0m04:36:48.277957 [debug] [Thread-1 (]: Finished running node model.global_economic_tracker.stg_commodity_metrics
+[0m04:36:48.278790 [info ] [Thread-2 (]: 2 of 2 OK created sql table model public.stg_index_metrics ..................... [[32mSELECT 0[0m in 0.11s]
+[0m04:36:48.280138 [debug] [Thread-2 (]: Finished running node model.global_economic_tracker.stg_index_metrics
+[0m04:36:48.282026 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:48.282711 [debug] [MainThread]: On master: BEGIN
+[0m04:36:48.283339 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m04:36:48.285604 [debug] [MainThread]: SQL status: BEGIN in 0.002 seconds
+[0m04:36:48.286346 [debug] [MainThread]: On master: COMMIT
+[0m04:36:48.287058 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:48.287755 [debug] [MainThread]: On master: COMMIT
+[0m04:36:48.288643 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m04:36:48.289331 [debug] [MainThread]: On master: Close
+[0m04:36:48.290152 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:36:48.290813 [debug] [MainThread]: Connection 'model.global_economic_tracker.stg_commodity_metrics' was properly closed.
+[0m04:36:48.291485 [debug] [MainThread]: Connection 'model.global_economic_tracker.stg_index_metrics' was properly closed.
+[0m04:36:48.292193 [info ] [MainThread]: 
+[0m04:36:48.292980 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 0.19 seconds (0.19s).
+[0m04:36:48.293938 [debug] [MainThread]: Command end result
+[0m04:36:48.321631 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/global_economic_tracker/target/manifest.json
+[0m04:36:48.325259 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/global_economic_tracker/target/semantic_manifest.json
+[0m04:36:48.331165 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/global_economic_tracker/target/run_results.json
+[0m04:36:48.331823 [info ] [MainThread]: 
+[0m04:36:48.332606 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m04:36:48.333450 [info ] [MainThread]: 
+[0m04:36:48.334245 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
+[0m04:36:48.335341 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 1.5005274, "process_in_blocks": "0", "process_kernel_time": 0.178575, "process_mem_max_rss": "123016", "process_out_blocks": "0", "process_user_time": 1.408763}
+[0m04:36:48.336198 [debug] [MainThread]: Command `dbt run` succeeded at 04:36:48.336118 after 1.50 seconds
+[0m04:36:48.336906 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcddc87ef90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd7919bb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcdd8ba9250>]}
+[0m04:36:48.337605 [debug] [MainThread]: Flushing usage events
+[0m04:36:48.698467 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:36:50.806021 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb66fc1eb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb6687f4d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb6687fe60>]}
+
+
+============================== 04:36:50.810030 | fd5a8172-1898-49f7-b987-a54be131f6a6 ==============================
+[0m04:36:50.810030 [info ] [MainThread]: Running with dbt=1.9.4
+[0m04:36:50.810922 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': '/home/airflow/.dbt', 'log_path': '/opt/global_economic_tracker/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt test --profiles-dir /home/airflow/.dbt', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m04:36:50.934099 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'fd5a8172-1898-49f7-b987-a54be131f6a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb665dac90>]}
+[0m04:36:50.974829 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'fd5a8172-1898-49f7-b987-a54be131f6a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb66662660>]}
+[0m04:36:50.975779 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m04:36:51.033160 [debug] [MainThread]: checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
+[0m04:36:51.899055 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m04:36:51.899847 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m04:36:51.922450 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'fd5a8172-1898-49f7-b987-a54be131f6a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb64d90ad0>]}
+[0m04:36:51.980433 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/global_economic_tracker/target/manifest.json
+[0m04:36:51.985975 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/global_economic_tracker/target/semantic_manifest.json
+[0m04:36:52.013235 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'fd5a8172-1898-49f7-b987-a54be131f6a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb6559ecc0>]}
+[0m04:36:52.014159 [info ] [MainThread]: Found 4 models, 22 data tests, 549 macros
+[0m04:36:52.014970 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'fd5a8172-1898-49f7-b987-a54be131f6a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb67d02c60>]}
+[0m04:36:52.016988 [info ] [MainThread]: 
+[0m04:36:52.017856 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m04:36:52.018642 [info ] [MainThread]: 
+[0m04:36:52.019566 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m04:36:52.022836 [debug] [ThreadPool]: Acquiring new postgres connection 'list_airflow_public'
+[0m04:36:52.038590 [debug] [ThreadPool]: Using postgres connection "list_airflow_public"
+[0m04:36:52.039307 [debug] [ThreadPool]: On list_airflow_public: BEGIN
+[0m04:36:52.040025 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m04:36:52.043177 [debug] [ThreadPool]: SQL status: BEGIN in 0.003 seconds
+[0m04:36:52.043857 [debug] [ThreadPool]: Using postgres connection "list_airflow_public"
+[0m04:36:52.044581 [debug] [ThreadPool]: On list_airflow_public: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "connection_name": "list_airflow_public"} */
+select
+      'airflow' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'airflow' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'airflow' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m04:36:52.047168 [debug] [ThreadPool]: SQL status: SELECT 49 in 0.002 seconds
+[0m04:36:52.048700 [debug] [ThreadPool]: On list_airflow_public: ROLLBACK
+[0m04:36:52.049502 [debug] [ThreadPool]: On list_airflow_public: Close
+[0m04:36:52.055089 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:52.055782 [debug] [MainThread]: On master: BEGIN
+[0m04:36:52.056514 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m04:36:52.058622 [debug] [MainThread]: SQL status: BEGIN in 0.002 seconds
+[0m04:36:52.059651 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:52.060362 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m04:36:52.062339 [debug] [MainThread]: SQL status: SELECT 0 in 0.001 seconds
+[0m04:36:52.063559 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'fd5a8172-1898-49f7-b987-a54be131f6a6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb662859a0>]}
+[0m04:36:52.064333 [debug] [MainThread]: On master: ROLLBACK
+[0m04:36:52.065093 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:52.065740 [debug] [MainThread]: On master: BEGIN
+[0m04:36:52.066649 [debug] [MainThread]: SQL status: BEGIN in 0.000 seconds
+[0m04:36:52.067395 [debug] [MainThread]: On master: COMMIT
+[0m04:36:52.068287 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:52.068992 [debug] [MainThread]: On master: COMMIT
+[0m04:36:52.069837 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m04:36:52.070520 [debug] [MainThread]: On master: Close
+[0m04:36:52.075084 [debug] [Thread-1 (]: Began running node test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5
+[0m04:36:52.075367 [debug] [Thread-2 (]: Began running node test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295
+[0m04:36:52.075748 [debug] [Thread-3 (]: Began running node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4
+[0m04:36:52.076125 [debug] [Thread-4 (]: Began running node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7
+[0m04:36:52.076548 [info ] [Thread-1 (]: 1 of 22 START test accepted_values_stg_commodity_metrics_trend__up__down__flat . [RUN]
+[0m04:36:52.077310 [info ] [Thread-2 (]: 2 of 22 START test accepted_values_stg_index_metrics_trend__up__down__flat ..... [RUN]
+[0m04:36:52.078017 [info ] [Thread-3 (]: 3 of 22 START test dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5  [RUN]
+[0m04:36:52.078870 [info ] [Thread-4 (]: 4 of 22 START test dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3  [RUN]
+[0m04:36:52.079748 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_airflow_public, now test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5)
+[0m04:36:52.080728 [debug] [Thread-2 (]: Acquiring new postgres connection 'test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295'
+[0m04:36:52.081521 [debug] [Thread-3 (]: Acquiring new postgres connection 'test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4'
+[0m04:36:52.082293 [debug] [Thread-4 (]: Acquiring new postgres connection 'test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7'
+[0m04:36:52.083024 [debug] [Thread-1 (]: Began compiling node test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5
+[0m04:36:52.083792 [debug] [Thread-2 (]: Began compiling node test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295
+[0m04:36:52.084542 [debug] [Thread-3 (]: Began compiling node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4
+[0m04:36:52.085277 [debug] [Thread-4 (]: Began compiling node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7
+[0m04:36:52.094032 [debug] [Thread-1 (]: Writing injected SQL for node "test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5"
+[0m04:36:52.096255 [debug] [Thread-2 (]: Writing injected SQL for node "test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295"
+[0m04:36:52.101237 [debug] [Thread-3 (]: Writing injected SQL for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4"
+[0m04:36:52.104031 [debug] [Thread-4 (]: Writing injected SQL for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7"
+[0m04:36:52.109156 [debug] [Thread-1 (]: Began executing node test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5
+[0m04:36:52.115157 [debug] [Thread-3 (]: Began executing node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4
+[0m04:36:52.117881 [debug] [Thread-1 (]: Writing runtime sql for node "test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5"
+[0m04:36:52.118169 [debug] [Thread-4 (]: Began executing node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7
+[0m04:36:52.119750 [debug] [Thread-3 (]: Writing runtime sql for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4"
+[0m04:36:52.120052 [debug] [Thread-2 (]: Began executing node test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295
+[0m04:36:52.122051 [debug] [Thread-4 (]: Writing runtime sql for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7"
+[0m04:36:52.124086 [debug] [Thread-2 (]: Writing runtime sql for node "test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295"
+[0m04:36:52.125539 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5"
+[0m04:36:52.126608 [debug] [Thread-1 (]: On test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5: BEGIN
+[0m04:36:52.126934 [debug] [Thread-3 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4"
+[0m04:36:52.127523 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7"
+[0m04:36:52.127783 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m04:36:52.128772 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4: BEGIN
+[0m04:36:52.129236 [debug] [Thread-2 (]: Using postgres connection "test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295"
+[0m04:36:52.129967 [debug] [Thread-4 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7: BEGIN
+[0m04:36:52.131355 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m04:36:52.132113 [debug] [Thread-2 (]: On test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295: BEGIN
+[0m04:36:52.132667 [debug] [Thread-1 (]: SQL status: BEGIN in 0.005 seconds
+[0m04:36:52.133082 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m04:36:52.134361 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m04:36:52.135108 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5"
+[0m04:36:52.135408 [debug] [Thread-3 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.137146 [debug] [Thread-1 (]: On test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        trend as value_field,
+        count(*) as n_records
+
+    from "airflow"."public"."stg_commodity_metrics"
+    group by trend
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'up','down','flat'
+)
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.137501 [debug] [Thread-4 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.138062 [debug] [Thread-3 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4"
+[0m04:36:52.138723 [debug] [Thread-2 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.139582 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7"
+[0m04:36:52.139851 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.001 seconds
+[0m04:36:52.140608 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+
+with meet_condition as(
+  select *
+  from "airflow"."public"."stg_commodity_metrics"
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not daily_return >= -0.5
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not daily_return <= 0.5
+)
+
+select *
+from validation_errors
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.141537 [debug] [Thread-2 (]: Using postgres connection "test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295"
+[0m04:36:52.142272 [debug] [Thread-4 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+
+with meet_condition as(
+  select *
+  from "airflow"."public"."stg_commodity_metrics"
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not rolling_avg_mo >= -0.3
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not rolling_avg_mo <= 0.3
+)
+
+select *
+from validation_errors
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.144895 [debug] [Thread-1 (]: On test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5: ROLLBACK
+[0m04:36:52.146185 [debug] [Thread-2 (]: On test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        trend as value_field,
+        count(*) as n_records
+
+    from "airflow"."public"."stg_index_metrics"
+    group by trend
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'up','down','flat'
+)
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.146506 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.001 seconds
+[0m04:36:52.147574 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.001 seconds
+[0m04:36:52.147929 [debug] [Thread-1 (]: On test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5: Close
+[0m04:36:52.149601 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4: ROLLBACK
+[0m04:36:52.149881 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.001 seconds
+[0m04:36:52.150979 [debug] [Thread-4 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7: ROLLBACK
+[0m04:36:52.151888 [info ] [Thread-1 (]: 1 of 22 PASS accepted_values_stg_commodity_metrics_trend__up__down__flat ....... [[32mPASS[0m in 0.07s]
+[0m04:36:52.152528 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4: Close
+[0m04:36:52.153588 [debug] [Thread-2 (]: On test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295: ROLLBACK
+[0m04:36:52.154434 [debug] [Thread-4 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7: Close
+[0m04:36:52.155135 [debug] [Thread-1 (]: Finished running node test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5
+[0m04:36:52.156004 [info ] [Thread-3 (]: 3 of 22 PASS dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5  [[32mPASS[0m in 0.07s]
+[0m04:36:52.156659 [debug] [Thread-2 (]: On test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295: Close
+[0m04:36:52.157353 [info ] [Thread-4 (]: 4 of 22 PASS dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3  [[32mPASS[0m in 0.08s]
+[0m04:36:52.158011 [debug] [Thread-1 (]: Began running node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26
+[0m04:36:52.158919 [debug] [Thread-3 (]: Finished running node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4
+[0m04:36:52.159827 [info ] [Thread-2 (]: 2 of 22 PASS accepted_values_stg_index_metrics_trend__up__down__flat ........... [[32mPASS[0m in 0.08s]
+[0m04:36:52.160450 [debug] [Thread-4 (]: Finished running node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7
+[0m04:36:52.161185 [info ] [Thread-1 (]: 5 of 22 START test dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2  [RUN]
+[0m04:36:52.161916 [debug] [Thread-3 (]: Began running node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe
+[0m04:36:52.162745 [debug] [Thread-2 (]: Finished running node test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295
+[0m04:36:52.163501 [debug] [Thread-4 (]: Began running node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2
+[0m04:36:52.164254 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.accepted_values_stg_commodity_metrics_trend__up__down__flat.70479897b5, now test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26)
+[0m04:36:52.164933 [info ] [Thread-3 (]: 6 of 22 START test dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5  [RUN]
+[0m04:36:52.165678 [debug] [Thread-2 (]: Began running node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921
+[0m04:36:52.166436 [info ] [Thread-4 (]: 7 of 22 START test dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5  [RUN]
+[0m04:36:52.167205 [debug] [Thread-1 (]: Began compiling node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26
+[0m04:36:52.167950 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_daily_return__0_5___0_5.2c4246e1e4, now test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe)
+[0m04:36:52.168677 [info ] [Thread-2 (]: 8 of 22 START test dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3  [RUN]
+[0m04:36:52.169732 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_rolling_avg_mo__0_3___0_3.22c9d514f7, now test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2)
+[0m04:36:52.172901 [debug] [Thread-1 (]: Writing injected SQL for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26"
+[0m04:36:52.173639 [debug] [Thread-3 (]: Began compiling node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe
+[0m04:36:52.174413 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.accepted_values_stg_index_metrics_trend__up__down__flat.1fea418295, now test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921)
+[0m04:36:52.175143 [debug] [Thread-4 (]: Began compiling node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2
+[0m04:36:52.178103 [debug] [Thread-3 (]: Writing injected SQL for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe"
+[0m04:36:52.179055 [debug] [Thread-2 (]: Began compiling node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921
+[0m04:36:52.181607 [debug] [Thread-4 (]: Writing injected SQL for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2"
+[0m04:36:52.182867 [debug] [Thread-1 (]: Began executing node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26
+[0m04:36:52.185008 [debug] [Thread-2 (]: Writing injected SQL for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921"
+[0m04:36:52.187275 [debug] [Thread-1 (]: Writing runtime sql for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26"
+[0m04:36:52.189547 [debug] [Thread-3 (]: Began executing node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe
+[0m04:36:52.191252 [debug] [Thread-3 (]: Writing runtime sql for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe"
+[0m04:36:52.191502 [debug] [Thread-4 (]: Began executing node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2
+[0m04:36:52.191757 [debug] [Thread-2 (]: Began executing node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921
+[0m04:36:52.193761 [debug] [Thread-4 (]: Writing runtime sql for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2"
+[0m04:36:52.195379 [debug] [Thread-2 (]: Writing runtime sql for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921"
+[0m04:36:52.196281 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26"
+[0m04:36:52.197430 [debug] [Thread-3 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe"
+[0m04:36:52.197870 [debug] [Thread-1 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26: BEGIN
+[0m04:36:52.198672 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe: BEGIN
+[0m04:36:52.198988 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2"
+[0m04:36:52.199785 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m04:36:52.200258 [debug] [Thread-2 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921"
+[0m04:36:52.200660 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m04:36:52.201397 [debug] [Thread-4 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2: BEGIN
+[0m04:36:52.202659 [debug] [Thread-2 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921: BEGIN
+[0m04:36:52.203933 [debug] [Thread-1 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.204345 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m04:36:52.204890 [debug] [Thread-3 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.205321 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m04:36:52.206058 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26"
+[0m04:36:52.207519 [debug] [Thread-3 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe"
+[0m04:36:52.208398 [debug] [Thread-4 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.209028 [debug] [Thread-1 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+
+with meet_condition as(
+  select *
+  from "airflow"."public"."stg_commodity_metrics"
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not sharpe_mo >= -2
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not sharpe_mo <= 2
+)
+
+select *
+from validation_errors
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.209721 [debug] [Thread-2 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.209995 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+
+with meet_condition as(
+  select *
+  from "airflow"."public"."stg_commodity_returns"
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not daily_return >= -0.5
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not daily_return <= 0.5
+)
+
+select *
+from validation_errors
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.210746 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2"
+[0m04:36:52.212030 [debug] [Thread-2 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921"
+[0m04:36:52.212485 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.001 seconds
+[0m04:36:52.213412 [debug] [Thread-4 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+
+with meet_condition as(
+  select *
+  from "airflow"."public"."stg_index_metrics"
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not daily_return >= -0.5
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not daily_return <= 0.5
+)
+
+select *
+from validation_errors
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.213702 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.001 seconds
+[0m04:36:52.214256 [debug] [Thread-2 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+
+with meet_condition as(
+  select *
+  from "airflow"."public"."stg_index_metrics"
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not rolling_avg_mo >= -0.3
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not rolling_avg_mo <= 0.3
+)
+
+select *
+from validation_errors
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.215718 [debug] [Thread-1 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26: ROLLBACK
+[0m04:36:52.217061 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.217811 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe: ROLLBACK
+[0m04:36:52.218991 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.219376 [debug] [Thread-1 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26: Close
+[0m04:36:52.220474 [debug] [Thread-4 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2: ROLLBACK
+[0m04:36:52.221347 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe: Close
+[0m04:36:52.222377 [debug] [Thread-2 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921: ROLLBACK
+[0m04:36:52.223261 [info ] [Thread-1 (]: 5 of 22 PASS dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2 ... [[32mPASS[0m in 0.06s]
+[0m04:36:52.224073 [debug] [Thread-4 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2: Close
+[0m04:36:52.224801 [info ] [Thread-3 (]: 6 of 22 PASS dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5  [[32mPASS[0m in 0.06s]
+[0m04:36:52.225438 [debug] [Thread-2 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921: Close
+[0m04:36:52.226125 [debug] [Thread-1 (]: Finished running node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26
+[0m04:36:52.226997 [info ] [Thread-4 (]: 7 of 22 PASS dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5  [[32mPASS[0m in 0.06s]
+[0m04:36:52.227638 [debug] [Thread-3 (]: Finished running node test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe
+[0m04:36:52.228509 [info ] [Thread-2 (]: 8 of 22 PASS dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3  [[32mPASS[0m in 0.05s]
+[0m04:36:52.229086 [debug] [Thread-1 (]: Began running node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc
+[0m04:36:52.229987 [debug] [Thread-4 (]: Finished running node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2
+[0m04:36:52.230744 [debug] [Thread-3 (]: Began running node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713
+[0m04:36:52.231562 [debug] [Thread-2 (]: Finished running node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921
+[0m04:36:52.232290 [info ] [Thread-1 (]: 9 of 22 START test dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2 . [RUN]
+[0m04:36:52.233017 [debug] [Thread-4 (]: Began running node test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336
+[0m04:36:52.233777 [info ] [Thread-3 (]: 10 of 22 START test dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5  [RUN]
+[0m04:36:52.234506 [debug] [Thread-2 (]: Began running node test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7
+[0m04:36:52.235290 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_metrics_sharpe_mo__2___2.d118d6bf26, now test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc)
+[0m04:36:52.236097 [info ] [Thread-4 (]: 11 of 22 START test not_null_stg_commodity_metrics_daily_return ................ [RUN]
+[0m04:36:52.236852 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.dbt_utils_accepted_range_stg_commodity_returns_daily_return__0_5___0_5.d73ca1f9fe, now test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713)
+[0m04:36:52.237799 [info ] [Thread-2 (]: 12 of 22 START test not_null_stg_commodity_metrics_ticker ...................... [RUN]
+[0m04:36:52.238565 [debug] [Thread-1 (]: Began compiling node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc
+[0m04:36:52.239335 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_daily_return__0_5___0_5.6e9f33b0a2, now test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336)
+[0m04:36:52.240173 [debug] [Thread-3 (]: Began compiling node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713
+[0m04:36:52.240925 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_rolling_avg_mo__0_3___0_3.13a5241921, now test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7)
+[0m04:36:52.243250 [debug] [Thread-1 (]: Writing injected SQL for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc"
+[0m04:36:52.244466 [debug] [Thread-4 (]: Began compiling node test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336
+[0m04:36:52.246917 [debug] [Thread-3 (]: Writing injected SQL for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713"
+[0m04:36:52.247965 [debug] [Thread-2 (]: Began compiling node test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7
+[0m04:36:52.253534 [debug] [Thread-4 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336"
+[0m04:36:52.256431 [debug] [Thread-2 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7"
+[0m04:36:52.257681 [debug] [Thread-1 (]: Began executing node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc
+[0m04:36:52.259523 [debug] [Thread-1 (]: Writing runtime sql for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc"
+[0m04:36:52.260492 [debug] [Thread-4 (]: Began executing node test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336
+[0m04:36:52.260816 [debug] [Thread-3 (]: Began executing node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713
+[0m04:36:52.261330 [debug] [Thread-2 (]: Began executing node test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7
+[0m04:36:52.262303 [debug] [Thread-4 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336"
+[0m04:36:52.263748 [debug] [Thread-3 (]: Writing runtime sql for node "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713"
+[0m04:36:52.265218 [debug] [Thread-2 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7"
+[0m04:36:52.267694 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc"
+[0m04:36:52.267966 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336"
+[0m04:36:52.268767 [debug] [Thread-1 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc: BEGIN
+[0m04:36:52.269629 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336: BEGIN
+[0m04:36:52.269963 [debug] [Thread-2 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7"
+[0m04:36:52.270631 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m04:36:52.271203 [debug] [Thread-3 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713"
+[0m04:36:52.271603 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m04:36:52.272370 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7: BEGIN
+[0m04:36:52.273785 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713: BEGIN
+[0m04:36:52.274482 [debug] [Thread-1 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.275343 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m04:36:52.276076 [debug] [Thread-4 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.276364 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m04:36:52.277101 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc"
+[0m04:36:52.278404 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336"
+[0m04:36:52.279130 [debug] [Thread-2 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.280144 [debug] [Thread-1 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+
+with meet_condition as(
+  select *
+  from "airflow"."public"."stg_index_metrics"
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not sharpe_mo >= -2
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not sharpe_mo <= 2
+)
+
+select *
+from validation_errors
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.280868 [debug] [Thread-3 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.281135 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select daily_return
+from "airflow"."public"."stg_commodity_metrics"
+where daily_return is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.281864 [debug] [Thread-2 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7"
+[0m04:36:52.283092 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.001 seconds
+[0m04:36:52.283397 [debug] [Thread-3 (]: Using postgres connection "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713"
+[0m04:36:52.284472 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.284866 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select ticker
+from "airflow"."public"."stg_commodity_metrics"
+where ticker is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.286083 [debug] [Thread-1 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc: ROLLBACK
+[0m04:36:52.286831 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+
+with meet_condition as(
+  select *
+  from "airflow"."public"."stg_index_returns"
+),
+
+validation_errors as (
+  select *
+  from meet_condition
+  where
+    -- never true, defaults to an empty result set. Exists to ensure any combo of the `or` clauses below succeeds
+    1 = 2
+    -- records with a value >= min_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not daily_return >= -0.5
+    -- records with a value <= max_value are permitted. The `not` flips this to find records that don't meet the rule.
+    or not daily_return <= 0.5
+)
+
+select *
+from validation_errors
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.287981 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336: ROLLBACK
+[0m04:36:52.289045 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.289612 [debug] [Thread-1 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc: Close
+[0m04:36:52.290682 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.291043 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336: Close
+[0m04:36:52.292083 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7: ROLLBACK
+[0m04:36:52.292953 [info ] [Thread-1 (]: 9 of 22 PASS dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2 ....... [[32mPASS[0m in 0.06s]
+[0m04:36:52.294148 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713: ROLLBACK
+[0m04:36:52.295117 [info ] [Thread-4 (]: 11 of 22 PASS not_null_stg_commodity_metrics_daily_return ...................... [[32mPASS[0m in 0.06s]
+[0m04:36:52.295785 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7: Close
+[0m04:36:52.296441 [debug] [Thread-1 (]: Finished running node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc
+[0m04:36:52.297288 [debug] [Thread-3 (]: On test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713: Close
+[0m04:36:52.297955 [debug] [Thread-4 (]: Finished running node test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336
+[0m04:36:52.298868 [info ] [Thread-2 (]: 12 of 22 PASS not_null_stg_commodity_metrics_ticker ............................ [[32mPASS[0m in 0.06s]
+[0m04:36:52.299495 [debug] [Thread-1 (]: Began running node test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196
+[0m04:36:52.300395 [info ] [Thread-3 (]: 10 of 22 PASS dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5  [[32mPASS[0m in 0.06s]
+[0m04:36:52.300973 [debug] [Thread-4 (]: Began running node test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934
+[0m04:36:52.301984 [debug] [Thread-2 (]: Finished running node test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7
+[0m04:36:52.302708 [info ] [Thread-1 (]: 13 of 22 START test not_null_stg_commodity_metrics_timestamp ................... [RUN]
+[0m04:36:52.303520 [debug] [Thread-3 (]: Finished running node test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713
+[0m04:36:52.304226 [info ] [Thread-4 (]: 14 of 22 START test not_null_stg_commodity_returns_daily_return ................ [RUN]
+[0m04:36:52.304999 [debug] [Thread-2 (]: Began running node test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d
+[0m04:36:52.305985 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.dbt_utils_accepted_range_stg_index_metrics_sharpe_mo__2___2.5a4a583bdc, now test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196)
+[0m04:36:52.306834 [debug] [Thread-3 (]: Began running node test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359
+[0m04:36:52.307628 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.not_null_stg_commodity_metrics_daily_return.74b14cc336, now test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934)
+[0m04:36:52.308363 [info ] [Thread-2 (]: 15 of 22 START test not_null_stg_commodity_returns_ticker ...................... [RUN]
+[0m04:36:52.309089 [debug] [Thread-1 (]: Began compiling node test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196
+[0m04:36:52.309857 [info ] [Thread-3 (]: 16 of 22 START test not_null_stg_commodity_returns_timestamp ................... [RUN]
+[0m04:36:52.310574 [debug] [Thread-4 (]: Began compiling node test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934
+[0m04:36:52.311329 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.not_null_stg_commodity_metrics_ticker.6d1d8d12d7, now test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d)
+[0m04:36:52.313732 [debug] [Thread-1 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196"
+[0m04:36:52.314671 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.dbt_utils_accepted_range_stg_index_returns_daily_return__0_5___0_5.634bf70713, now test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359)
+[0m04:36:52.316935 [debug] [Thread-4 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934"
+[0m04:36:52.317729 [debug] [Thread-2 (]: Began compiling node test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d
+[0m04:36:52.319158 [debug] [Thread-3 (]: Began compiling node test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359
+[0m04:36:52.322104 [debug] [Thread-2 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d"
+[0m04:36:52.324500 [debug] [Thread-3 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359"
+[0m04:36:52.326259 [debug] [Thread-4 (]: Began executing node test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934
+[0m04:36:52.326513 [debug] [Thread-1 (]: Began executing node test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196
+[0m04:36:52.327998 [debug] [Thread-4 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934"
+[0m04:36:52.328270 [debug] [Thread-2 (]: Began executing node test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d
+[0m04:36:52.330519 [debug] [Thread-1 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196"
+[0m04:36:52.330830 [debug] [Thread-3 (]: Began executing node test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359
+[0m04:36:52.332749 [debug] [Thread-2 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d"
+[0m04:36:52.334797 [debug] [Thread-3 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359"
+[0m04:36:52.336065 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934"
+[0m04:36:52.337119 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934: BEGIN
+[0m04:36:52.337586 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196"
+[0m04:36:52.337849 [debug] [Thread-2 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d"
+[0m04:36:52.338254 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m04:36:52.339047 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196: BEGIN
+[0m04:36:52.340006 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d: BEGIN
+[0m04:36:52.340903 [debug] [Thread-3 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359"
+[0m04:36:52.341759 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m04:36:52.342521 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m04:36:52.342859 [debug] [Thread-4 (]: SQL status: BEGIN in 0.005 seconds
+[0m04:36:52.343426 [debug] [Thread-3 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359: BEGIN
+[0m04:36:52.345323 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934"
+[0m04:36:52.345716 [debug] [Thread-1 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.346324 [debug] [Thread-2 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.346794 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m04:36:52.347569 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select daily_return
+from "airflow"."public"."stg_commodity_returns"
+where daily_return is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.348307 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196"
+[0m04:36:52.349037 [debug] [Thread-2 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d"
+[0m04:36:52.351186 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.001 seconds
+[0m04:36:52.351454 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select timestamp
+from "airflow"."public"."stg_commodity_metrics"
+where timestamp is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.351733 [debug] [Thread-3 (]: SQL status: BEGIN in 0.005 seconds
+[0m04:36:52.352540 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select ticker
+from "airflow"."public"."stg_commodity_returns"
+where ticker is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.353811 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934: ROLLBACK
+[0m04:36:52.354957 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.355492 [debug] [Thread-3 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359"
+[0m04:36:52.356585 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.357099 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934: Close
+[0m04:36:52.358114 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196: ROLLBACK
+[0m04:36:52.358827 [debug] [Thread-3 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select timestamp
+from "airflow"."public"."stg_commodity_returns"
+where timestamp is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.360198 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d: ROLLBACK
+[0m04:36:52.361115 [info ] [Thread-4 (]: 14 of 22 PASS not_null_stg_commodity_returns_daily_return ...................... [[32mPASS[0m in 0.05s]
+[0m04:36:52.361785 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196: Close
+[0m04:36:52.362691 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.363299 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d: Close
+[0m04:36:52.363965 [debug] [Thread-4 (]: Finished running node test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934
+[0m04:36:52.364812 [info ] [Thread-1 (]: 13 of 22 PASS not_null_stg_commodity_metrics_timestamp ......................... [[32mPASS[0m in 0.06s]
+[0m04:36:52.365843 [debug] [Thread-3 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359: ROLLBACK
+[0m04:36:52.366720 [info ] [Thread-2 (]: 15 of 22 PASS not_null_stg_commodity_returns_ticker ............................ [[32mPASS[0m in 0.06s]
+[0m04:36:52.367491 [debug] [Thread-4 (]: Began running node test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193
+[0m04:36:52.368415 [debug] [Thread-1 (]: Finished running node test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196
+[0m04:36:52.369228 [debug] [Thread-3 (]: On test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359: Close
+[0m04:36:52.369896 [debug] [Thread-2 (]: Finished running node test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d
+[0m04:36:52.370622 [info ] [Thread-4 (]: 17 of 22 START test not_null_stg_index_metrics_daily_return .................... [RUN]
+[0m04:36:52.371356 [debug] [Thread-1 (]: Began running node test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9
+[0m04:36:52.372283 [info ] [Thread-3 (]: 16 of 22 PASS not_null_stg_commodity_returns_timestamp ......................... [[32mPASS[0m in 0.06s]
+[0m04:36:52.372850 [debug] [Thread-2 (]: Began running node test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86
+[0m04:36:52.373753 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.not_null_stg_commodity_returns_daily_return.4aee50d934, now test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193)
+[0m04:36:52.374503 [info ] [Thread-1 (]: 18 of 22 START test not_null_stg_index_metrics_ticker .......................... [RUN]
+[0m04:36:52.375426 [debug] [Thread-3 (]: Finished running node test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359
+[0m04:36:52.376145 [info ] [Thread-2 (]: 19 of 22 START test not_null_stg_index_metrics_timestamp ....................... [RUN]
+[0m04:36:52.376843 [debug] [Thread-4 (]: Began compiling node test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193
+[0m04:36:52.377551 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.not_null_stg_commodity_metrics_timestamp.5651d4b196, now test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9)
+[0m04:36:52.378355 [debug] [Thread-3 (]: Began running node test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8
+[0m04:36:52.379113 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.not_null_stg_commodity_returns_ticker.667685f78d, now test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86)
+[0m04:36:52.381585 [debug] [Thread-4 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193"
+[0m04:36:52.382367 [debug] [Thread-1 (]: Began compiling node test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9
+[0m04:36:52.383107 [info ] [Thread-3 (]: 20 of 22 START test not_null_stg_index_returns_daily_return .................... [RUN]
+[0m04:36:52.383869 [debug] [Thread-2 (]: Began compiling node test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86
+[0m04:36:52.386670 [debug] [Thread-1 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9"
+[0m04:36:52.387474 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.not_null_stg_commodity_returns_timestamp.db78c2b359, now test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8)
+[0m04:36:52.389884 [debug] [Thread-2 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86"
+[0m04:36:52.390740 [debug] [Thread-4 (]: Began executing node test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193
+[0m04:36:52.391328 [debug] [Thread-3 (]: Began compiling node test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8
+[0m04:36:52.393562 [debug] [Thread-4 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193"
+[0m04:36:52.395867 [debug] [Thread-3 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8"
+[0m04:36:52.396973 [debug] [Thread-1 (]: Began executing node test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9
+[0m04:36:52.397679 [debug] [Thread-2 (]: Began executing node test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86
+[0m04:36:52.399364 [debug] [Thread-1 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9"
+[0m04:36:52.400938 [debug] [Thread-2 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86"
+[0m04:36:52.402817 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193"
+[0m04:36:52.403684 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193: BEGIN
+[0m04:36:52.403978 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9"
+[0m04:36:52.404737 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m04:36:52.405525 [debug] [Thread-2 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86"
+[0m04:36:52.405834 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9: BEGIN
+[0m04:36:52.406080 [debug] [Thread-3 (]: Began executing node test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8
+[0m04:36:52.407471 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86: BEGIN
+[0m04:36:52.408183 [debug] [Thread-4 (]: SQL status: BEGIN in 0.003 seconds
+[0m04:36:52.408508 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m04:36:52.410665 [debug] [Thread-3 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8"
+[0m04:36:52.411424 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m04:36:52.412236 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193"
+[0m04:36:52.414760 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select daily_return
+from "airflow"."public"."stg_index_metrics"
+where daily_return is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.415015 [debug] [Thread-1 (]: SQL status: BEGIN in 0.006 seconds
+[0m04:36:52.415548 [debug] [Thread-2 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.416181 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.416640 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9"
+[0m04:36:52.417361 [debug] [Thread-2 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86"
+[0m04:36:52.418606 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193: ROLLBACK
+[0m04:36:52.419377 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select ticker
+from "airflow"."public"."stg_index_metrics"
+where ticker is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.420286 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select timestamp
+from "airflow"."public"."stg_index_metrics"
+where timestamp is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.421013 [debug] [Thread-3 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8"
+[0m04:36:52.421386 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193: Close
+[0m04:36:52.422357 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.422946 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.423357 [debug] [Thread-3 (]: On test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8: BEGIN
+[0m04:36:52.424233 [info ] [Thread-4 (]: 17 of 22 PASS not_null_stg_index_metrics_daily_return .......................... [[32mPASS[0m in 0.05s]
+[0m04:36:52.425256 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9: ROLLBACK
+[0m04:36:52.426441 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86: ROLLBACK
+[0m04:36:52.427188 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m04:36:52.428023 [debug] [Thread-4 (]: Finished running node test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193
+[0m04:36:52.428864 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9: Close
+[0m04:36:52.429620 [debug] [Thread-2 (]: On test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86: Close
+[0m04:36:52.430888 [debug] [Thread-4 (]: Began running node test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0
+[0m04:36:52.431513 [debug] [Thread-3 (]: SQL status: BEGIN in 0.004 seconds
+[0m04:36:52.431919 [info ] [Thread-1 (]: 18 of 22 PASS not_null_stg_index_metrics_ticker ................................ [[32mPASS[0m in 0.05s]
+[0m04:36:52.432592 [info ] [Thread-2 (]: 19 of 22 PASS not_null_stg_index_metrics_timestamp ............................. [[32mPASS[0m in 0.05s]
+[0m04:36:52.433272 [info ] [Thread-4 (]: 21 of 22 START test not_null_stg_index_returns_ticker .......................... [RUN]
+[0m04:36:52.433990 [debug] [Thread-3 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8"
+[0m04:36:52.434812 [debug] [Thread-1 (]: Finished running node test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9
+[0m04:36:52.435572 [debug] [Thread-2 (]: Finished running node test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86
+[0m04:36:52.436296 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.not_null_stg_index_metrics_daily_return.26f4856193, now test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0)
+[0m04:36:52.437024 [debug] [Thread-3 (]: On test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select daily_return
+from "airflow"."public"."stg_index_returns"
+where daily_return is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.437871 [debug] [Thread-1 (]: Began running node test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17
+[0m04:36:52.439347 [debug] [Thread-4 (]: Began compiling node test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0
+[0m04:36:52.440476 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.440876 [info ] [Thread-1 (]: 22 of 22 START test not_null_stg_index_returns_timestamp ....................... [RUN]
+[0m04:36:52.443371 [debug] [Thread-4 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0"
+[0m04:36:52.444965 [debug] [Thread-3 (]: On test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8: ROLLBACK
+[0m04:36:52.445831 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.global_economic_tracker.not_null_stg_index_metrics_ticker.4b922607c9, now test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17)
+[0m04:36:52.447218 [debug] [Thread-3 (]: On test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8: Close
+[0m04:36:52.447815 [debug] [Thread-1 (]: Began compiling node test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17
+[0m04:36:52.448682 [info ] [Thread-3 (]: 20 of 22 PASS not_null_stg_index_returns_daily_return .......................... [[32mPASS[0m in 0.06s]
+[0m04:36:52.450847 [debug] [Thread-1 (]: Writing injected SQL for node "test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17"
+[0m04:36:52.451646 [debug] [Thread-3 (]: Finished running node test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8
+[0m04:36:52.452443 [debug] [Thread-4 (]: Began executing node test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0
+[0m04:36:52.454640 [debug] [Thread-4 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0"
+[0m04:36:52.457213 [debug] [Thread-1 (]: Began executing node test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17
+[0m04:36:52.458649 [debug] [Thread-1 (]: Writing runtime sql for node "test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17"
+[0m04:36:52.461195 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0"
+[0m04:36:52.462103 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0: BEGIN
+[0m04:36:52.462516 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17"
+[0m04:36:52.463013 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m04:36:52.463739 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17: BEGIN
+[0m04:36:52.465082 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m04:36:52.465921 [debug] [Thread-4 (]: SQL status: BEGIN in 0.003 seconds
+[0m04:36:52.466628 [debug] [Thread-4 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0"
+[0m04:36:52.467294 [debug] [Thread-1 (]: SQL status: BEGIN in 0.002 seconds
+[0m04:36:52.467555 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select ticker
+from "airflow"."public"."stg_index_returns"
+where ticker is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.468306 [debug] [Thread-1 (]: Using postgres connection "test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17"
+[0m04:36:52.469482 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.469889 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "global_economic_tracker", "target_name": "dev", "node_id": "test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select timestamp
+from "airflow"."public"."stg_index_returns"
+where timestamp is null
+
+
+
+      
+    ) dbt_internal_test
+[0m04:36:52.471120 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0: ROLLBACK
+[0m04:36:52.472198 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.000 seconds
+[0m04:36:52.472698 [debug] [Thread-4 (]: On test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0: Close
+[0m04:36:52.473722 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17: ROLLBACK
+[0m04:36:52.474655 [info ] [Thread-4 (]: 21 of 22 PASS not_null_stg_index_returns_ticker ................................ [[32mPASS[0m in 0.04s]
+[0m04:36:52.475365 [debug] [Thread-1 (]: On test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17: Close
+[0m04:36:52.476058 [debug] [Thread-4 (]: Finished running node test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0
+[0m04:36:52.476880 [info ] [Thread-1 (]: 22 of 22 PASS not_null_stg_index_returns_timestamp ............................. [[32mPASS[0m in 0.03s]
+[0m04:36:52.478047 [debug] [Thread-1 (]: Finished running node test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17
+[0m04:36:52.480113 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:52.480809 [debug] [MainThread]: On master: BEGIN
+[0m04:36:52.481491 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m04:36:52.483478 [debug] [MainThread]: SQL status: BEGIN in 0.002 seconds
+[0m04:36:52.484187 [debug] [MainThread]: On master: COMMIT
+[0m04:36:52.485034 [debug] [MainThread]: Using postgres connection "master"
+[0m04:36:52.485713 [debug] [MainThread]: On master: COMMIT
+[0m04:36:52.486702 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m04:36:52.487436 [debug] [MainThread]: On master: Close
+[0m04:36:52.488166 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m04:36:52.488903 [debug] [MainThread]: Connection 'test.global_economic_tracker.not_null_stg_index_returns_timestamp.4f8a428b17' was properly closed.
+[0m04:36:52.489624 [debug] [MainThread]: Connection 'test.global_economic_tracker.not_null_stg_index_metrics_timestamp.b1d1abca86' was properly closed.
+[0m04:36:52.490307 [debug] [MainThread]: Connection 'test.global_economic_tracker.not_null_stg_index_returns_daily_return.19ad6938b8' was properly closed.
+[0m04:36:52.491042 [debug] [MainThread]: Connection 'test.global_economic_tracker.not_null_stg_index_returns_ticker.acc6892ae0' was properly closed.
+[0m04:36:52.491738 [info ] [MainThread]: 
+[0m04:36:52.492499 [info ] [MainThread]: Finished running 22 data tests in 0 hours 0 minutes and 0.47 seconds (0.47s).
+[0m04:36:52.494649 [debug] [MainThread]: Command end result
+[0m04:36:52.564035 [debug] [MainThread]: Wrote artifact WritableManifest to /opt/global_economic_tracker/target/manifest.json
+[0m04:36:52.568790 [debug] [MainThread]: Wrote artifact SemanticManifest to /opt/global_economic_tracker/target/semantic_manifest.json
+[0m04:36:52.576922 [debug] [MainThread]: Wrote artifact RunExecutionResult to /opt/global_economic_tracker/target/run_results.json
+[0m04:36:52.577706 [info ] [MainThread]: 
+[0m04:36:52.578566 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m04:36:52.579350 [info ] [MainThread]: 
+[0m04:36:52.580273 [info ] [MainThread]: Done. PASS=22 WARN=0 ERROR=0 SKIP=0 TOTAL=22
+[0m04:36:52.581845 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 1.8107997, "process_in_blocks": "1968", "process_kernel_time": 0.26121, "process_mem_max_rss": "124040", "process_out_blocks": "0", "process_user_time": 1.535916}
+[0m04:36:52.582712 [debug] [MainThread]: Command `dbt test` succeeded at 04:36:52.582624 after 1.81 seconds
+[0m04:36:52.583494 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb69e9fdd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb66fe2c90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ffb69ec29c0>]}
+[0m04:36:52.584242 [debug] [MainThread]: Flushing usage events
+[0m04:36:52.926237 [debug] [MainThread]: An error was encountered while trying to flush usage events

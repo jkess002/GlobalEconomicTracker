@@ -1,6 +1,7 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
+from airflow.operators.empty import EmptyOperator
 from datetime import datetime, timedelta
 from airflow.hooks.base import BaseHook
 from airflow.providers.slack.operators.slack_webhook import SlackWebhookOperator
@@ -8,7 +9,9 @@ from airflow.providers.http.operators.http import SimpleHttpOperator
 from airflow.utils.dates import days_ago
 from airflow.models import Variable
 from airflow.utils.trigger_rule import TriggerRule
-import requests, json
+import requests, json, os
+from etl_tasks import save_to_postgres
+from zoneinfo import ZoneInfo
 
 
 default_args = {
@@ -20,36 +23,13 @@ default_args = {
 }
 
 def send_slack_alert(status, **context):
-#     dag_id = context['dag'].dag_id
-#     run_id = context['run_id']
-#     execution_date = context['execution_date']
-#     log_url = context['task_instance'].log_url
-#
-#     emojis = {
-#         "started": "🚀",
-#         "success": "✅",
-#         "failed": "💥😢❌"
-#     }
-#
-#     emoji = emojis.get(status, "🔔")
-#     message = f"""
-# {emoji} *DBT Pipeline {status.upper()}*
-# *DAG:* `{dag_id}`
-# *Run ID:* `{run_id}`
-# *Execution Time:* `{execution_date}`
-# 🔗 *<{log_url}|View Logs>*
-#     """
-#
-#     return SlackWebhookOperator(
-#         task_id=f'slack_notification_{status}',
-#         slack_webhook_conn_id='slack_default',
-#         message=message,
-#         username='airflow 🤖',
-#     ).execute(context=context)
     dag_id = context['dag'].dag_id
     run_id = context['run_id']
     execution_date = context['execution_date']
     log_url = context['task_instance'].log_url
+
+    local_time = execution_date.replace(tzinfo=ZoneInfo("UTC")).astimezone(ZoneInfo("America/Los_Angeles"))
+    formatted_time = local_time.strftime("%Y-%m-%d %I:%M:%S %p %Z")
 
     emojis = {
         "started": "🚀",
@@ -59,15 +39,21 @@ def send_slack_alert(status, **context):
 
     emoji = emojis.get(status, "🔔")
     message = f"""
-        {emoji} *DBT Pipeline {status.upper()}*
-        *DAG:* `{dag_id}`
-        *Run ID:* `{run_id}`
-        *Execution Time:* `{execution_date}`
-        🔗 *<{log_url}|View Logs>*
-            """
+    {emoji} DBT Pipeline {status.upper()}
+    DAG: {dag_id}
+    Run ID: {run_id}
+    Execution Time: {formatted_time}
+    View Logs: {log_url}
+    """
 
-    webhook_token = Variable.get("slack_webhook_url")
-    requests.post(webhook_token, json={"text": message})
+    webhook_url = os.getenv("SLACK_WEBHOOK_URL")
+
+    response = requests.post(
+        webhook_url,
+        json={"mytestkey": message},
+        headers={"Content-Type": "application/json"}
+    )
+    response.raise_for_status()
 
 with DAG(
     dag_id='global_econ_dbt_pipeline',
@@ -77,19 +63,25 @@ with DAG(
     tags=['dbt', 'analytics']
 ) as dag:
 
+    load_data = PythonOperator(
+        task_id="load_market_data",
+        python_callable=save_to_postgres,
+        op_kwargs={'backfill': False}
+    )
+
     run_staging_models = BashOperator(
         task_id='run_staging_models',
-        bash_command='cd /opt/global_economic_tracker && dbt run --select path:models/staging'
+        bash_command='cd /opt/global_economic_tracker && dbt run --select path:models/staging --profiles-dir /home/airflow/.dbt'
     )
 
     run_analytics_models = BashOperator(
         task_id='run_analytics_models',
-        bash_command='cd /opt/global_economic_tracker && dbt run --select path:models/analytics'
+        bash_command='cd /opt/global_economic_tracker && dbt run --select path:models/analytics --profiles-dir /home/airflow/.dbt'
     )
 
     run_dbt_tests = BashOperator(
         task_id='run_dbt_tests',
-        bash_command='cd /opt/global_economic_tracker && dbt test'
+        bash_command='cd /opt/global_economic_tracker && dbt test --profiles-dir /home/airflow/.dbt'
     )
 
     start_alert = SimpleHttpOperator(
@@ -98,7 +90,8 @@ with DAG(
         endpoint='',
         method='POST',
         headers={"Content-Type": "application/json"},
-        data=json.dumps({"mytestkey": f"🚀 DAG ({dag.dag_id}) has started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!"})
+        data=json.dumps(
+            {"mytestkey": f"🚀 DAG ({dag.dag_id}) has started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!"})
     )
 
     end_alert = SimpleHttpOperator(
@@ -107,7 +100,8 @@ with DAG(
         endpoint='',
         method='POST',
         headers={"Content-Type": "application/json"},
-        data=json.dumps({"mytestkey": f"✅ DAG ({dag.dag_id}) completed successfully  at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!"})
+        data=json.dumps(
+            {"mytestkey": f"✅ DAG ({dag.dag_id}) completed successfully  at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!"})
     )
 
     fail_alert = PythonOperator(
@@ -117,6 +111,7 @@ with DAG(
         trigger_rule=TriggerRule.ONE_FAILED
     )
 
-    start_alert >> run_staging_models >> run_analytics_models >> run_dbt_tests >> end_alert
+    start_alert >> load_data >> run_staging_models >> run_analytics_models >> run_dbt_tests >> end_alert
     [run_staging_models, run_analytics_models, run_dbt_tests] >> fail_alert
+
 

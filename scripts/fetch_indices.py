@@ -1,7 +1,10 @@
 import yfinance as yf
-import sqlite3
+import psycopg2
+from sqlalchemy import create_engine, text
+from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy import Table, MetaData
 import pandas as pd
-import sys
+import sys,  os
 from datetime import datetime, timezone
 
 INDICES = [
@@ -55,7 +58,6 @@ def fetch_index_data(period="90d"):
 
     return pd.DataFrame(records, columns=["timestamp", "country", "index_name", "ticker", "close"])
 
-
 def fetch_commodity_data(period="90d"):
     records = []
     for item in COMMODITIES:
@@ -77,47 +79,94 @@ def fetch_commodity_data(period="90d"):
 
     return pd.DataFrame(records, columns=["timestamp", "name", "ticker", "close"])
 
-def save_to_sqlite(backfill=False):
-    if backfill:
-        db = "db/global_economic_tracker.sqlite"
-    else:
-        db = "../db/global_economic_tracker.sqlite"
-    con = sqlite3.connect(db)
-    cursor = con.cursor()
+def insert_on_conflict(engine, table_name, df, unique_cols):
+    metadata = MetaData(bind=engine)
+    metadata.reflect()
+    table = Table(table_name, metadata, autoload_with=engine)
+    stmt = insert(table).values(df.to_dict(orient="records"))
+    stmt = stmt.on_conflict_do_nothing(index_elements=unique_cols)
+    with engine.begin() as conn:
+        conn.execute(stmt)
 
-    cursor.execute("""
-            CREATE TABLE IF NOT EXISTS index_history (
-                timestamp TEXT,
+def table_has_data(conn, table_name):
+    result = conn.execute(text(f"SELECT COUNT(*) FROM {table_name}"))
+    count = result.scalar()
+    return count > 0
+
+def save_to_postgres(backfill=False):
+    user = os.getenv("POSTGRES_USER")
+    password = os.getenv("POSTGRES_PASSWORD")
+    host = os.getenv("POSTGRES_HOST")
+    port = os.getenv("POSTGRES_PORT")
+    dbname = os.getenv("POSTGRES_DB")
+
+
+    engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}")
+    conn = engine.connect()
+
+    with conn.begin():
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS index_prices (
+                timestamp TIMESTAMP,
                 country TEXT,
-                index_name TEXT,
-                ticker TEXT,
-                close REAL
-            )
-        """)
-
-    df_index = fetch_index_data("90d" if backfill else "1d")
-    df_index.to_sql("index_history", con, if_exists="append", index=False)
-    print(f"✅ Saved {len(df_index)} index records.")
-
-    cursor.execute("""
-            CREATE TABLE IF NOT EXISTS commodity_prices (
-                timestamp TEXT,
                 name TEXT,
                 ticker TEXT,
-                close REAL
+                price DOUBLE PRECISION
             )
-        """)
+        """))
 
-    df_commodities = fetch_commodity_data("90d" if backfill else "5d")
-    df_commodities.to_sql("commodity_prices", con, if_exists="append", index=False)
-    print(f"✅ Saved {len(df_commodities)} commodity records.")
+        conn.execute(text("""
+            DO $$
+            BEGIN
+                IF NOT EXISTS (
+                    SELECT 1 FROM pg_constraint
+                    WHERE conname = 'index_prices_unique'
+                ) THEN
+                    ALTER TABLE index_prices
+                    ADD CONSTRAINT index_prices_unique UNIQUE (timestamp, ticker);
+                END IF;
+            END
+            $$;
+        """))
 
-    con.close()
+        index_has_data = table_has_data(conn, "index_prices")
+        commodity_has_data = table_has_data(conn, "commodity_prices")
+        df_index = fetch_index_data("90d" if backfill or not index_has_data else "3d")
+        df_index.columns = ["timestamp", "country", "name", "ticker", "price"]
+        insert_on_conflict(engine, "index_prices", df_index, ["timestamp", "ticker"])
+        print(f"✅ Saved {len(df_index)} index records.")
+
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS commodity_prices (
+                timestamp TIMESTAMP,
+                name TEXT,
+                ticker TEXT,
+                price DOUBLE PRECISION
+            )
+        """))
+
+        conn.execute(text("""
+            DO $$
+            BEGIN
+                IF NOT EXISTS (
+                    SELECT 1 FROM pg_constraint
+                    WHERE conname = 'commodity_prices_unique'
+                ) THEN
+                    ALTER TABLE commodity_prices
+                    ADD CONSTRAINT commodity_prices_unique UNIQUE (timestamp, ticker);
+                END IF;
+            END
+            $$;
+        """))
+
+        df_commodities = fetch_commodity_data("90d" if backfill or not commodity_has_data else "3d")
+        df_commodities.columns = ["timestamp", "name", "ticker", "price"]
+        insert_on_conflict(engine, "index_prices", df_index, ["timestamp", "ticker"])
+        print(f"✅ Saved {len(df_commodities)} commodity records.")
+
+    conn.close()
 
 if __name__ == "__main__":
     backfill = "--backfill" in sys.argv
-    if backfill:
-        print("📦 Running 90-day backfill...")
-    else:
-        print("📅 Fetching current data...")
-    save_to_sqlite(backfill=backfill)
+    print("📦 Running 90-day backfill..." if backfill else "📅 Fetching current data...")
+    save_to_postgres(backfill=backfill)
