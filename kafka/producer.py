@@ -10,9 +10,9 @@ from scripts.fetch_indices import INDICES, COMMODITIES
 INDEX_TICKERS = {d["ticker"] for d in INDICES}
 COMMODITY_TICKERS = {d["ticker"] for d in COMMODITIES}
 
-KAFKA_TOPIC = "economic.daily.raw"
-KAFKA_BROKER = "localhost:9092"
-DATA_PATH = "output/index_analytics.csv"
+KAFKA_TOPIC = os.getenv("KAFKA_TOPIC")
+KAFKA_BROKER = os.getenv("KAFKA_BROKER")
+DATA_PATH = os.getenv("KAFKA_DATA_PATH")
 
 producer = KafkaProducer(
     bootstrap_servers=KAFKA_BROKER,
@@ -23,6 +23,11 @@ producer = KafkaProducer(
 
 def stream_to_kafka():
     df = pd.read_csv(DATA_PATH, parse_dates=["timestamp"])
+
+    if df.empty:
+        print("⚠️ No data to stream.")
+        return
+
     latest = df["timestamp"].max()
     latest_df = df[df["timestamp"] == latest]
 
@@ -33,7 +38,7 @@ def stream_to_kafka():
             else "unknown"
         )
         message = {
-            "timestamp": row["timestamp"].strftime("%Y-%m-%d"),
+            "timestamp": row["timestamp"].strftime("%Y-%m-%d %H:%M:%S"),
             "ticker": row["ticker"],
             "price": round(row["price"], 2) if "price" in row else None,
             "daily_return": round(row["daily_return"], 6),

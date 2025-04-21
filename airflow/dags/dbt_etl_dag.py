@@ -10,7 +10,6 @@ from airflow.utils.dates import days_ago
 from airflow.models import Variable
 from airflow.utils.trigger_rule import TriggerRule
 import requests, json, os
-from etl_tasks import save_to_postgres
 from zoneinfo import ZoneInfo
 
 
@@ -63,12 +62,6 @@ with DAG(
     tags=['dbt', 'analytics']
 ) as dag:
 
-    load_data = PythonOperator(
-        task_id="load_market_data",
-        python_callable=save_to_postgres,
-        op_kwargs={'backfill': False}
-    )
-
     run_staging_models = BashOperator(
         task_id='run_staging_models',
         bash_command='cd /opt/global_economic_tracker && dbt run --select path:models/staging --profiles-dir /home/airflow/.dbt'
@@ -111,7 +104,7 @@ with DAG(
         trigger_rule=TriggerRule.ONE_FAILED
     )
 
-    start_alert >> load_data >> run_staging_models >> run_analytics_models >> run_dbt_tests >> end_alert
+    start_alert >> run_staging_models >> run_analytics_models >> run_dbt_tests >> end_alert
     [run_staging_models, run_analytics_models, run_dbt_tests] >> fail_alert
 
 

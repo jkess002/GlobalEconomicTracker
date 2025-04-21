@@ -1,6 +1,7 @@
 kafka-python
 pandas
-duckdb
+sqlalchemy
+psycopg2-binary
 dbt-core
 python-dotenv
 yfinance

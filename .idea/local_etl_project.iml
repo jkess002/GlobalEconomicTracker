@@ -5,7 +5,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/global_economic_tracker/dbt_packages/dbt_utils/integration_tests/.env" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.12 (local_etl_project)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.12 virtualenv at C:\Users\joeyk\PycharmProjects\GlobalEconomicTracker\.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

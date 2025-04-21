@@ -1,10 +1,10 @@
 import yfinance as yf
-import psycopg2
+from kafka import KafkaProducer
 from sqlalchemy import create_engine, text
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy import Table, MetaData
 import pandas as pd
-import sys,  os
+import sys, os, psycopg2, json
 from datetime import datetime, timezone
 
 INDICES = [
@@ -34,7 +34,6 @@ COMMODITIES = [
     {"name": "Natural Gas", "ticker": "NG=F"},
     {"name": "Copper", "ticker": "HG=F"},
 ]
-
 
 def fetch_index_data(period="90d"):
     records = []
@@ -104,6 +103,11 @@ def save_to_postgres(backfill=False):
     engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}")
     conn = engine.connect()
 
+    producer = KafkaProducer(
+        bootstrap_servers=os.getenv("KAFKA_BROKER", "localhost:9092"),
+        value_serializer=lambda v: json.dumps(v).encode("utf-8")
+    )
+
     with conn.begin():
         conn.execute(text("""
             CREATE TABLE IF NOT EXISTS index_prices (
@@ -134,6 +138,8 @@ def save_to_postgres(backfill=False):
         df_index = fetch_index_data("90d" if backfill or not index_has_data else "3d")
         df_index.columns = ["timestamp", "country", "name", "ticker", "price"]
         insert_on_conflict(engine, "index_prices", df_index, ["timestamp", "ticker"])
+        for _, row in df_index.iterrows():
+            producer.send("index_data", row.to_dict())
         print(f"✅ Saved {len(df_index)} index records.")
 
         conn.execute(text("""
@@ -161,7 +167,11 @@ def save_to_postgres(backfill=False):
 
         df_commodities = fetch_commodity_data("90d" if backfill or not commodity_has_data else "3d")
         df_commodities.columns = ["timestamp", "name", "ticker", "price"]
-        insert_on_conflict(engine, "index_prices", df_index, ["timestamp", "ticker"])
+        insert_on_conflict(engine, "commodity_prices", df_commodities, ["timestamp", "ticker"])
+        for _, row in df_commodities.iterrows():
+            producer.send("commodity_data", row.to_dict())
+        producer.flush()
+
         print(f"✅ Saved {len(df_commodities)} commodity records.")
 
     conn.close()
