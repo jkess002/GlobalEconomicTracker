@@ -6,6 +6,9 @@ from sqlalchemy import Table, MetaData
 import pandas as pd
 import sys, os, psycopg2, json
 from datetime import datetime, timezone
+from dotenv import load_dotenv
+
+load_dotenv()
 
 INDICES = [
     {"country": "USA", "name": "S&P 500", "ticker": "^GSPC"},
@@ -96,15 +99,14 @@ def save_to_postgres(backfill=False):
     user = os.getenv("POSTGRES_USER")
     password = os.getenv("POSTGRES_PASSWORD")
     host = os.getenv("POSTGRES_HOST")
-    port = os.getenv("POSTGRES_PORT")
+    port = int(os.getenv("POSTGRES_PORT", 5432))
     dbname = os.getenv("POSTGRES_DB")
-
 
     engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}")
     conn = engine.connect()
 
     producer = KafkaProducer(
-        bootstrap_servers=os.getenv("KAFKA_BROKER", "localhost:9092"),
+        bootstrap_servers=os.getenv("KAFKA_BROKER"),
         value_serializer=lambda v: json.dumps(v).encode("utf-8")
     )
 
