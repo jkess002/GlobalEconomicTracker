@@ -7,3 +7,5 @@ python-dotenv
 yfinance
 seaborn
 matplotlib
+pytest
+pytest-cov
