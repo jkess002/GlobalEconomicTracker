@@ -2,11 +2,9 @@ name: CI - Run Python & dbt Unit Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   test:
@@ -28,15 +26,15 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Cache pip dependencies
+      - name: 💾 Cache pip dependencies
         uses: actions/cache@v3
         with:
           path: ~/.cache/pip
@@ -44,17 +42,49 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install apache-airflow dbt-core dbt-postgres pytest pytest-cov
+          pip install apache-airflow dbt-core dbt-postgres pytest flake8 pytest-cov
 
-      - name: Run unit tests
+      - name: 🧹 Run linter (flake8)
         run: |
-          pytest --cov=.
+          flake8 . --exclude .venv
 
-      - name: Upload coverage report (optional)
+      - name: 🛠 Set up dbt profiles
+        run: |
+          mkdir -p ~/.dbt
+          echo "
+          global_economic_tracker:
+            target: dev
+            outputs:
+              dev:
+                type: postgres
+                host: localhost
+                user: airflow
+                password: airflow
+                port: 5432
+                dbname: airflow
+                schema: public
+                threads: 1
+          " > ~/.dbt/profiles.yml
+
+      - name: 🚀 Run dbt models
+        run: |
+          dbt deps
+          dbt run --profiles-dir ~/.dbt
+
+      - name: 🧪 Run dbt tests
+        run: |
+          dbt test --profiles-dir ~/.dbt
+
+      - name: ✅ Run unit tests with coverage
+        run: |
+          pytest --cov=src --cov-report=term-missing --cov-report=html tests/
+
+      - name: 📤 Upload coverage report (optional)
+        if: success()
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
