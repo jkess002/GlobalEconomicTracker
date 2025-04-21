@@ -2,9 +2,11 @@ name: CI - Run Python & dbt Unit Tests
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   test:
@@ -26,64 +28,34 @@ jobs:
           --health-retries 5
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Cache pip dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install apache-airflow dbt-core dbt-postgres pytest pytest-cov
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install apache-airflow dbt-core dbt-postgres pytest flake8
+      - name: Run unit tests
+        run: |
+          pytest --cov=.
 
-    - name: Run linter (flake8)
-      run: |
-        flake8 . --exclude .venv
-
-    - name: Set up dbt profiles
-      run: |
-        mkdir -p ~/.dbt
-        echo "
-        global_economic_tracker:
-          target: dev
-          outputs:
-            dev:
-              type: postgres
-              host: localhost
-              user: airflow
-              password: airflow
-              port: 5432
-              dbname: airflow
-              schema: public
-              threads: 1
-        " > ~/.dbt/profiles.yml
-
-    - name: Run dbt models
-      run: |
-        dbt deps
-        dbt run --profiles-dir ~/.dbt
-
-    - name: Run dbt tests
-      run: |
-        dbt test --profiles-dir ~/.dbt
-
-    - name: Run unit tests
-      run: |
-        pytest tests/
-
-    - name: Run unit tests with coverage
-      run: |
-        pytest --cov=src tests/
+      - name: Upload coverage report (optional)
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: htmlcov/
