@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from kafka.producer import stream_to_kafka
+from kafka_pipeline.producer import stream_to_kafka
 
 
 @patch("my_kafka_module.producer.send")

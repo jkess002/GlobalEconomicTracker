@@ -22,16 +22,16 @@ services:
       dockerfile: Dockerfile
     environment:
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
-      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow_pipeline:airflow_pipeline@postgres:5432/airflow_pipeline
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
       - AIRFLOW__WEBSERVER__SECRET_KEY=${AIRFLOW__WEBSERVER__SECRET_KEY}
     volumes:
-      - ./airflow/dags:/opt/airflow/dags
-      - ./airflow/logs:/opt/airflow/logs
-      - ./airflow/plugins:/opt/airflow/plugins
+      - ./airflow_pipeline/dags:/opt/airflow_pipeline/dags
+      - ./airflow_pipeline/logs:/opt/airflow_pipeline/logs
+      - ./airflow_pipeline/plugins:/opt/airflow_pipeline/plugins
       - ./global_economic_tracker:/opt/global_economic_tracker
-      - ~/.dbt:/home/airflow/.dbt
+      - ~/.dbt:/home/airflow_pipeline/.dbt
     ports:
       - "8080:8080"
     command: webserver
@@ -46,16 +46,16 @@ services:
       dockerfile: Dockerfile
     environment:
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
-      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow_pipeline:airflow_pipeline@postgres:5432/airflow_pipeline
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
       - AIRFLOW__WEBSERVER__SECRET_KEY=${AIRFLOW__WEBSERVER__SECRET_KEY}
     volumes:
-      - ./airflow/dags:/opt/airflow/dags
-      - ./airflow/logs:/opt/airflow/logs
-      - ./airflow/plugins:/opt/airflow/plugins
+      - ./airflow_pipeline/dags:/opt/airflow_pipeline/dags
+      - ./airflow_pipeline/logs:/opt/airflow_pipeline/logs
+      - ./airflow_pipeline/plugins:/opt/airflow_pipeline/plugins
       - ./global_economic_tracker:/opt/global_economic_tracker
-      - ~/.dbt:/home/airflow/.dbt
+      - ~/.dbt:/home/airflow_pipeline/.dbt
     command: scheduler
     restart: always
     depends_on:

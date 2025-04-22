@@ -4,15 +4,15 @@ from zoneinfo import ZoneInfo
 import json
 import os
 import requests
-from airflow.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
-from airflow.providers.http.operators.http import SimpleHttpOperator
-from airflow.utils.trigger_rule import TriggerRule
+from airflow_pipeline.operators.bash import BashOperator
+from airflow_pipeline.operators.python import PythonOperator
+from airflow_pipeline.providers.http.operators.http import SimpleHttpOperator
+from airflow_pipeline.utils.trigger_rule import TriggerRule
 
-from airflow import DAG
+from airflow_pipeline import DAG
 
 default_args = {
-    'owner': 'airflow',
+    'owner': 'airflow_pipeline',
     'start_date': datetime(2023, 1, 1),
     'retries': 1,
     'retry_delay': timedelta(seconds=15),
@@ -63,17 +63,17 @@ with DAG(
 ) as dag:
     run_staging_models = BashOperator(
         task_id='run_staging_models',
-        bash_command='cd /opt/global_economic_tracker && dbt run --select path:models/staging --profiles-dir /home/airflow/.dbt'
+        bash_command='cd /opt/global_economic_tracker && dbt run --select path:models/staging --profiles-dir /home/airflow_pipeline/.dbt'
     )
 
     run_analytics_models = BashOperator(
         task_id='run_analytics_models',
-        bash_command='cd /opt/global_economic_tracker && dbt run --select path:models/analytics --profiles-dir /home/airflow/.dbt'
+        bash_command='cd /opt/global_economic_tracker && dbt run --select path:models/analytics --profiles-dir /home/airflow_pipeline/.dbt'
     )
 
     run_dbt_tests = BashOperator(
         task_id='run_dbt_tests',
-        bash_command='cd /opt/global_economic_tracker && dbt test --profiles-dir /home/airflow/.dbt'
+        bash_command='cd /opt/global_economic_tracker && dbt test --profiles-dir /home/airflow_pipeline/.dbt'
     )
 
     start_alert = SimpleHttpOperator(

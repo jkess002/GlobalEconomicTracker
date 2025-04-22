@@ -4,7 +4,7 @@ from airflow.models import DagBag
 
 @pytest.fixture(scope="module")
 def dag_bag():
-    return DagBag(dag_folder="airflow/dags", include_examples=False)
+    return DagBag(dag_folder="airflow_pipeline/dags", include_examples=False)
 
 
 def test_dag_loaded(dag_bag):
@@ -14,7 +14,7 @@ def test_dag_loaded(dag_bag):
 
 def test_task_count(dag_bag):
     dag = dag_bag.get_dag('global_econ_dbt_pipeline')
-    assert len(dag.tasks) == 6  # Adjust depending on how many tasks you have
+    assert len(dag.tasks) == 6
 
 
 def test_task_dependencies(dag_bag):
