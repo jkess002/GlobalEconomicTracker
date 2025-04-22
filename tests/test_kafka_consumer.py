@@ -1,6 +1,8 @@
-import pytest
 from unittest.mock import patch, MagicMock
+
+import pytest
 from kafka.consumer import consume_messages
+
 
 @patch('global_economic_tracker.kafka.consumer.KafkaConsumer')
 def test_consumer_receives_data(mock_kafka_consumer):

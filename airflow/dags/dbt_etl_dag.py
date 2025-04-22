@@ -1,17 +1,20 @@
-from airflow import DAG
-from airflow.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
-from airflow.operators.empty import EmptyOperator
 from datetime import datetime, timedelta
-from airflow.hooks.base import BaseHook
-from airflow.providers.slack.operators.slack_webhook import SlackWebhookOperator
-from airflow.providers.http.operators.http import SimpleHttpOperator
-from airflow.utils.dates import days_ago
-from airflow.models import Variable
-from airflow.utils.trigger_rule import TriggerRule
-import requests, json, os
 from zoneinfo import ZoneInfo
 
+import json
+import os
+import requests
+from airflow.hooks.base import BaseHook
+from airflow.models import Variable
+from airflow.operators.bash import BashOperator
+from airflow.operators.empty import EmptyOperator
+from airflow.operators.python import PythonOperator
+from airflow.providers.http.operators.http import SimpleHttpOperator
+from airflow.providers.slack.operators.slack_webhook import SlackWebhookOperator
+from airflow.utils.dates import days_ago
+from airflow.utils.trigger_rule import TriggerRule
+
+from airflow import DAG
 
 default_args = {
     'owner': 'airflow',
@@ -20,6 +23,7 @@ default_args = {
     'retry_delay': timedelta(seconds=15),
     'depends_on_past': False
 }
+
 
 def send_slack_alert(status, **context):
     dag_id = context['dag'].dag_id
@@ -54,14 +58,14 @@ def send_slack_alert(status, **context):
     )
     response.raise_for_status()
 
-with DAG(
-    dag_id='global_econ_dbt_pipeline',
-    default_args=default_args,
-    schedule_interval='0 1 * * 2-6',  # 5 PM PST
-    catchup=False,
-    tags=['dbt', 'analytics']
-) as dag:
 
+with DAG(
+        dag_id='global_econ_dbt_pipeline',
+        default_args=default_args,
+        schedule_interval='0 1 * * 2-6',  # 5 PM PST
+        catchup=False,
+        tags=['dbt', 'analytics']
+) as dag:
     run_staging_models = BashOperator(
         task_id='run_staging_models',
         bash_command='cd /opt/global_economic_tracker && dbt run --select path:models/staging --profiles-dir /home/airflow/.dbt'
@@ -94,7 +98,8 @@ with DAG(
         method='POST',
         headers={"Content-Type": "application/json"},
         data=json.dumps(
-            {"mytestkey": f"✅ DAG ({dag.dag_id}) completed successfully  at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!"})
+            {
+                "mytestkey": f"✅ DAG ({dag.dag_id}) completed successfully  at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!"})
     )
 
     fail_alert = PythonOperator(
@@ -106,5 +111,3 @@ with DAG(
 
     start_alert >> run_staging_models >> run_analytics_models >> run_dbt_tests >> end_alert
     [run_staging_models, run_analytics_models, run_dbt_tests] >> fail_alert
-
-

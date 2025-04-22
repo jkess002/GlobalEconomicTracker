@@ -5,8 +5,7 @@
     ]
 ) }}
 
-select
-  cast(null as timestamp) as timestamp,
+select cast(null as timestamp) as timestamp,
   cast(null as text) as name,
   cast(null as text) as ticker,
   cast(null as double precision) as price

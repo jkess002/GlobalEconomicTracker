@@ -1,7 +1,8 @@
-from kafka import KafkaConsumer
 import json
-import sys
 import sqlite3
+
+from kafka import KafkaConsumer
+
 
 def consume_messages():
     consumer = KafkaConsumer(
@@ -21,14 +22,20 @@ def consume_messages():
     cursor = con.cursor()
 
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS raw_prices (
-            timestamp TEXT,
-            ticker TEXT,
-            price REAL,
-            daily_return REAL,
-            type TEXT
-        )
-        """)
+                   CREATE TABLE IF NOT EXISTS raw_prices
+                   (
+                       timestamp
+                       TEXT,
+                       ticker
+                       TEXT,
+                       price
+                       REAL,
+                       daily_return
+                       REAL,
+                       type
+                       TEXT
+                   )
+                   """)
 
     try:
         for message in consumer:
@@ -36,14 +43,14 @@ def consume_messages():
             value = message.value
 
             cursor.execute("""
-            INSERT INTO raw_prices (timestamp, ticker, price, daily_return, type)
-                VALUES (?, ?, ?, ?, ?)
-            """, (
-                value.get("timestamp"),
-                value.get("ticker"),
-                value.get("price"),
-                value.get("daily_return"),
-                value.get("type")))
+                           INSERT INTO raw_prices (timestamp, ticker, price, daily_return, type)
+                           VALUES (?, ?, ?, ?, ?)
+                           """, (
+                               value.get("timestamp"),
+                               value.get("ticker"),
+                               value.get("price"),
+                               value.get("daily_return"),
+                               value.get("type")))
 
             con.commit()
 
@@ -55,6 +62,7 @@ def consume_messages():
         consumer.close()
         con.close()
         print("👋 Consumer connection closed.")
+
 
 if __name__ == "__main__":
     consume_messages()

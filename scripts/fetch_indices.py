@@ -1,12 +1,15 @@
+import json
+import os
+import psycopg2
+import sys
+
+import pandas as pd
 import yfinance as yf
+from dotenv import load_dotenv
 from kafka import KafkaProducer
+from sqlalchemy import Table, MetaData
 from sqlalchemy import create_engine, text
 from sqlalchemy.dialects.postgresql import insert
-from sqlalchemy import Table, MetaData
-import pandas as pd
-import sys, os, psycopg2, json
-from datetime import datetime, timezone
-from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -41,6 +44,7 @@ COMMODITIES = [
 INDEX_TOPIC = "index_data"
 COMMODITY_TOPIC = "commodity_data"
 
+
 def fetch_index_data(period="90d"):
     records = []
     hist_date_range = yf.download(
@@ -63,6 +67,7 @@ def fetch_index_data(period="90d"):
 
     return pd.DataFrame(records, columns=["timestamp", "country", "index_name", "ticker", "close"])
 
+
 def fetch_commodity_data(period="90d"):
     records = []
     for item in COMMODITIES:
@@ -84,6 +89,7 @@ def fetch_commodity_data(period="90d"):
 
     return pd.DataFrame(records, columns=["timestamp", "name", "ticker", "close"])
 
+
 def insert_on_conflict(engine, table_name, df, unique_cols):
     metadata = MetaData()
     metadata.reflect(bind=engine)
@@ -93,10 +99,12 @@ def insert_on_conflict(engine, table_name, df, unique_cols):
     with engine.begin() as conn:
         conn.execute(stmt)
 
+
 def table_has_data(conn, table_name):
     result = conn.execute(text(f"SELECT COUNT(*) FROM {table_name}"))
     count = result.scalar()
     return count > 0
+
 
 def save_to_postgres(backfill=False):
     user = os.getenv("POSTGRES_USER")
@@ -148,6 +156,7 @@ def save_to_postgres(backfill=False):
         print(f"✅ Saved {len(df_commodities)} commodity records.")
 
     conn.close()
+
 
 if __name__ == "__main__":
     backfill = "--backfill" in sys.argv

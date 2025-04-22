@@ -1,5 +1,7 @@
 from unittest.mock import patch
+
 from airflow.dags.dbt_etl_dag import send_slack_alert
+
 
 @patch("my_dag.SlackWebhookOperator")
 def test_send_slack_alert(mock_slack):

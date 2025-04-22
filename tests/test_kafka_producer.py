@@ -1,6 +1,8 @@
-import pytest
 from unittest.mock import patch
+
+import pytest
 from kafka.producer import stream_to_kafka
+
 
 @patch("my_kafka_module.producer.send")
 def test_produce_to_kafka(mock_send):

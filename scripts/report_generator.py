@@ -1,9 +1,10 @@
+import base64
+import os
+from io import BytesIO
+
+import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as plt
-import base64
-from io import BytesIO
-import os
 
 OUTPUT_DIR = "output"
 REPORT_FILE = os.path.join(OUTPUT_DIR, "daily_report.html")
@@ -38,11 +39,13 @@ COMMODITIES = [
 
 NAME_MAP = {item["ticker"]: item["name"] for item in INDICES + COMMODITIES}
 
+
 def fig_to_base64(fig):
     buf = BytesIO()
     fig.savefig(buf, format="png", bbox_inches="tight")
     buf.seek(0)
     return base64.b64encode(buf.read()).decode("utf-8")
+
 
 def styled_df_to_html(df, title, color_column=None):
     styled = df.style.set_table_attributes('class="styled-table"').format({
@@ -55,8 +58,10 @@ def styled_df_to_html(df, title, color_column=None):
         def highlight_row(row):
             color = '#d4f4dd' if row[color_column] > 0 else '#f9d0c4'
             return ['background-color: {}'.format(color) if col == color_column else '' for col in row.index]
+
         styled = styled.apply(highlight_row, axis=1)
     return f"<div class='table-block'><h2>{title}</h2>{styled.to_html(index=False)}</div>"
+
 
 def calculate_z_scores(df):
     z_df = df.copy()
@@ -65,14 +70,18 @@ def calculate_z_scores(df):
     )
     return z_df
 
+
 def calculate_volatility_percentile(df):
     df = df.copy()
     df["rolling_volatility"] = df.groupby("ticker")["daily_return"].transform(lambda x: x.rolling(7).std())
+
     def percentile_rank(x):
         return x.rank(pct=True).iloc[-1] * 100 if not x.dropna().empty else None
+
     percentile_df = df.groupby("ticker")["rolling_volatility"].apply(percentile_rank).reset_index()
     percentile_df.columns = ["ticker", "volatility_pctile"]
     return percentile_df
+
 
 def create_correlation_heatmap(csv_path, title):
     df = pd.read_csv(csv_path, index_col=0)
@@ -81,6 +90,7 @@ def create_correlation_heatmap(csv_path, title):
     sns.heatmap(df, annot=True, cmap="coolwarm", center=0, fmt=".2f", ax=ax)
     ax.set_title(title)
     return fig_to_base64(fig)
+
 
 def create_rolling_plot(csv_path, title):
     df = pd.read_csv(csv_path, parse_dates=["timestamp"])
@@ -99,6 +109,7 @@ def create_rolling_plot(csv_path, title):
     ax.legend(loc="center left", bbox_to_anchor=(1, 0.5), fontsize="x-small")
     plt.tight_layout()
     return fig_to_base64(fig)
+
 
 def generate_combined_table(perf_path, sharpe_path, title):
     perf = pd.read_csv(perf_path, parse_dates=["timestamp"])
@@ -123,7 +134,9 @@ def generate_combined_table(perf_path, sharpe_path, title):
         "volatility_pctile": "Volatility Percentile"
     })
     merged = merged.sort_values("Daily Return", ascending=False)
-    return styled_df_to_html(merged, f"{title} — Daily Change, Sharpe, Z-Score & Volatility", color_column="Daily Return")
+    return styled_df_to_html(merged, f"{title} — Daily Change, Sharpe, Z-Score & Volatility",
+                             color_column="Daily Return")
+
 
 def generate_report():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -172,12 +185,16 @@ def generate_report():
     html_parts.append("</div>")
 
     for name in ["index", "commodity"]:
-        heatmap_img = create_correlation_heatmap(f"{OUTPUT_DIR}/{name}_correlation_matrix.csv", f"Correlation Matrix ({name.title()})")
-        html_parts.append(f"<h2>Correlation Matrix ({name.title()})</h2><img src='data:image/png;base64,{heatmap_img}' />")
+        heatmap_img = create_correlation_heatmap(f"{OUTPUT_DIR}/{name}_correlation_matrix.csv",
+                                                 f"Correlation Matrix ({name.title()})")
+        html_parts.append(
+            f"<h2>Correlation Matrix ({name.title()})</h2><img src='data:image/png;base64,{heatmap_img}' />")
 
     for name in ["index", "commodity"]:
-        rolling_img = create_rolling_plot(f"{OUTPUT_DIR}/{name}_analytics.csv", f"7-Day Rolling Averages ({name.title()})")
-        html_parts.append(f"<h2>7-Day Rolling Averages ({name.title()})</h2><img src='data:image/png;base64,{rolling_img}' />")
+        rolling_img = create_rolling_plot(f"{OUTPUT_DIR}/{name}_analytics.csv",
+                                          f"7-Day Rolling Averages ({name.title()})")
+        html_parts.append(
+            f"<h2>7-Day Rolling Averages ({name.title()})</h2><img src='data:image/png;base64,{rolling_img}' />")
 
     html_parts.append("</body></html>")
 
@@ -185,6 +202,7 @@ def generate_report():
         f.write("\n".join(html_parts))
 
     print(f"✅ Report generated: {REPORT_FILE}")
+
 
 if __name__ == "__main__":
     generate_report()

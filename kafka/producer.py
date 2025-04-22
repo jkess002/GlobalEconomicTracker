@@ -1,9 +1,10 @@
 import json
-from kafka import KafkaProducer
-import pandas as pd
-from datetime import datetime
-import sys
 import os
+import sys
+
+import pandas as pd
+from kafka import KafkaProducer
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from scripts.fetch_indices import INDICES, COMMODITIES
 
@@ -20,6 +21,7 @@ producer = KafkaProducer(
     retries=5,
     retry_backoff_ms=2000,
 )
+
 
 def stream_to_kafka():
     df = pd.read_csv(DATA_PATH, parse_dates=["timestamp"])
@@ -50,6 +52,7 @@ def stream_to_kafka():
 
     producer.flush()
     print("📤 Kafka streaming complete.")
+
 
 if __name__ == "__main__":
     stream_to_kafka()

@@ -6,8 +6,7 @@
 ) }}
 
 -- optional structure
-select
-  cast(null as timestamp) as timestamp,
+select cast(null as timestamp) as timestamp,
   cast(null as text) as country,
   cast(null as text) as name,
   cast(null as text) as ticker,
