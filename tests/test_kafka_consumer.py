@@ -1,6 +1,5 @@
 from unittest.mock import patch, MagicMock
 
-import pytest
 from kafka.consumer import consume_messages
 
 

@@ -39,7 +39,7 @@ def consume_messages():
 
     try:
         for message in consumer:
-            key = message.key
+            # key = message.key
             value = message.value
 
             cursor.execute("""

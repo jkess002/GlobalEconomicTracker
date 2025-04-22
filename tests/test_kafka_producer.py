@@ -1,6 +1,5 @@
 from unittest.mock import patch
 
-import pytest
 from kafka.producer import stream_to_kafka
 
 

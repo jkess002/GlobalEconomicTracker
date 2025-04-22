@@ -24,8 +24,7 @@ def test_task_dependencies(dag_bag):
         'notify_start': ['run_staging_models'],
         'run_staging_models': ['run_analytics_models'],
         'run_analytics_models': ['run_dbt_tests'],
-        'run_dbt_tests': ['notify_complete'],
-        'run_dbt_tests': ['check_failure'],
+        'run_dbt_tests': ['notify_complete', 'check_failure'],
         'check_failure': ['notify_failure']
     }
 

@@ -4,14 +4,10 @@ from zoneinfo import ZoneInfo
 import json
 import os
 import requests
-from airflow.hooks.base import BaseHook
-from airflow.models import Variable
 from airflow.operators.bash import BashOperator
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
 from airflow.providers.http.operators.http import SimpleHttpOperator
-from airflow.providers.slack.operators.slack_webhook import SlackWebhookOperator
-from airflow.utils.dates import days_ago
 from airflow.utils.trigger_rule import TriggerRule
 
 from airflow import DAG
