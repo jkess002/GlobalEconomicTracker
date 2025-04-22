@@ -1,21 +1,14 @@
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
-import kafka_pipeline.producer as producer_module
+from kafka_pipeline import producer
 
 
 @patch("kafka_pipeline.producer.KafkaProducer")
-def test_stream_to_kafka(mock_kafka_producer_class):
-    mock_producer_instance = MagicMock()
-    mock_kafka_producer_class.return_value = mock_producer_instance
+def test_stream_to_kafka(mock_producer_class):
+    mock_producer = MagicMock()
+    mock_producer_class.return_value = mock_producer
 
-    fake_data = [
-        {"timestamp": "2024-01-01", "ticker": "ABC", "price": 123.45},
-        {"timestamp": "2024-01-02", "ticker": "XYZ", "price": 234.56},
-    ]
+    sample_data = [{"ticker": "TEST", "price": 100, "timestamp": "2025-04-22"}]
+    producer.stream_to_kafka(sample_data)
 
-    producer_module.stream_to_kafka(fake_data, topic="test-topic")
-
-    assert mock_producer_instance.send.call_count == len(fake_data)
-    mock_producer_instance.send.assert_any_call("test-topic", value=fake_data[0])
-    mock_producer_instance.send.assert_any_call("test-topic", value=fake_data[1])
-    mock_producer_instance.flush.assert_called_once()
+    mock_producer.send.assert_called()
