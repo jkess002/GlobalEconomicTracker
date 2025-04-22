@@ -42,15 +42,19 @@ def consume_messages():
             # key = message.key
             value = message.value
 
-            cursor.execute("""
-                           INSERT INTO raw_prices (timestamp, ticker, price, daily_return, type)
-                           VALUES (?, ?, ?, ?, ?)
-                           """, (
-                               value.get("timestamp"),
-                               value.get("ticker"),
-                               value.get("price"),
-                               value.get("daily_return"),
-                               value.get("type")))
+            cursor.execute(
+                """
+                INSERT INTO raw_prices (timestamp, ticker, price, daily_return, type)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (
+                    value.get("timestamp"),
+                    value.get("ticker"),
+                    value.get("price"),
+                    value.get("daily_return"),
+                    value.get("type"),
+                )
+            )
 
             con.commit()
 

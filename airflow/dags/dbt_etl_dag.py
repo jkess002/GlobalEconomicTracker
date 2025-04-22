@@ -5,7 +5,6 @@ import json
 import os
 import requests
 from airflow.operators.bash import BashOperator
-from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
 from airflow.providers.http.operators.http import SimpleHttpOperator
 from airflow.utils.trigger_rule import TriggerRule
