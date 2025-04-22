@@ -71,11 +71,13 @@ jobs:
           " > ~/.dbt/profiles.yml
 
       - name: 🚀 Run dbt models
+        working-directory: ./global_economic_tracker
         run: |
           dbt deps
           dbt run --profiles-dir ~/.dbt
 
       - name: 🧪 Run dbt tests
+        working-directory: ./global_economic_tracker
         run: |
           dbt test --profiles-dir ~/.dbt
 
