@@ -1,10 +1,42 @@
 import json
+import os
 import sqlite3
+import threading
+import time
 
+import requests
 from kafka import KafkaConsumer
+
+DEBOUNCE_SECONDS = 15
+AIRFLOW_DAG_TRIGGER_URL = "http://localhost:8080/api/v1/dags/global_econ_dbt_pipeline/dagRuns"
+AIRFLOW_AUTH = (os.getenv("AIRFLOW_USER"), os.getenv("AIRFLOW_PASS"))
+
+last_message_time = time.time()
+dag_triggered = False
+
+
+def trigger_airflow():
+    global dag_triggered
+    dag_triggered = True
+    print("🛫 Triggering Airflow DAG...")
+    try:
+        response = requests.post(AIRFLOW_DAG_TRIGGER_URL, auth=AIRFLOW_AUTH, json={})
+        print(f"📡 Airflow response: {response.status_code} - {response.text}")
+    except Exception as e:
+        print(f"❌ Failed to trigger DAG: {e}")
+
+
+def debounce_trigger():
+    global last_message_time, dag_triggered
+    while True:
+        if time.time() - last_message_time > DEBOUNCE_SECONDS and not dag_triggered:
+            trigger_airflow()
+        time.sleep(1)
 
 
 def consume_messages():
+    global last_message_time, dag_triggered
+
     consumer = KafkaConsumer(
         "economic.daily.raw",
         bootstrap_servers="localhost:9092",
@@ -37,11 +69,11 @@ def consume_messages():
                    )
                    """)
 
+    threading.Thread(target=debounce_trigger, daemon=True).start()
+
     try:
         for message in consumer:
-            # key = message.key
             value = message.value
-
             cursor.execute(
                 """
                 INSERT INTO raw_prices (timestamp, ticker, price, daily_return, type)
@@ -55,8 +87,9 @@ def consume_messages():
                     value.get("type"),
                 )
             )
-
             con.commit()
+            last_message_time = time.time()
+            dag_triggered = False
 
     except KeyboardInterrupt:
         print("🛑 Stopping consumer (KeyboardInterrupt)")

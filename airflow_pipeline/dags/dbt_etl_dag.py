@@ -54,11 +54,11 @@ def send_slack_alert(status, **context):
 
 
 with DAG(
-        dag_id='global_econ_dbt_pipeline',
-        default_args=default_args,
-        schedule_interval='0 1 * * 2-6',  # 5 PM PST
-        catchup=False,
-        tags=['dbt', 'analytics']
+    dag_id='global_econ_dbt_pipeline',
+    start_date=datetime(2024, 1, 1),
+    schedule=None,
+    catchup=False,
+    tags=['dbt', 'analytics']
 ) as dag:
     run_staging_models = BashOperator(
         task_id='run_staging_models',
