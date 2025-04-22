@@ -85,7 +85,7 @@ jobs:
 
       - name: 📤 Upload coverage report (optional)
         if: success()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@3e65f2f86e8d2791a1eb1fdcc69d2c9e928b985
         with:
           name: coverage-report
           path: htmlcov/
