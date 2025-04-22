@@ -4,12 +4,12 @@ from zoneinfo import ZoneInfo
 import json
 import os
 import requests
-from airflow_pipeline.operators.bash import BashOperator
-from airflow_pipeline.operators.python import PythonOperator
-from airflow_pipeline.providers.http.operators.http import SimpleHttpOperator
-from airflow_pipeline.utils.trigger_rule import TriggerRule
+from airflow.operators.bash import BashOperator
+from airflow.operators.python import PythonOperator
+from airflow.providers.http.operators.http import SimpleHttpOperator
+from airflow.utils.trigger_rule import TriggerRule
 
-from airflow_pipeline import DAG
+from airflow import DAG
 
 default_args = {
     'owner': 'airflow_pipeline',
