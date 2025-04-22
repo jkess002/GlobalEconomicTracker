@@ -3,7 +3,7 @@ from unittest.mock import patch, MagicMock
 from kafka_pipeline.consumer import consume_messages
 
 
-@patch('global_economic_tracker.kafka_pipeline.consumer.KafkaConsumer')
+@patch('kafka_pipeline.consumer.KafkaConsumer')
 def test_consumer_receives_data(mock_kafka_consumer):
     mock_message = MagicMock()
     mock_message.value = {"ticker": "AAPL", "price": 150.5}

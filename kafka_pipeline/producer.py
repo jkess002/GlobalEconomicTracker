@@ -11,7 +11,6 @@ from scripts.fetch_indices import INDICES, COMMODITIES
 INDEX_TICKERS = {d["ticker"] for d in INDICES}
 COMMODITY_TICKERS = {d["ticker"] for d in COMMODITIES}
 
-KAFKA_TOPIC = os.getenv("KAFKA_TOPIC")
 KAFKA_BROKER = os.getenv("KAFKA_BROKER")
 DATA_PATH = os.getenv("KAFKA_DATA_PATH")
 
@@ -27,7 +26,8 @@ def get_kafka_producer():
     )
 
 
-def stream_to_kafka():
+def stream_to_kafka(records, topic=None):
+    topic = topic or os.getenv("KAFKA_TOPIC")
     df = pd.read_csv(DATA_PATH, parse_dates=["timestamp"])
     if df.empty:
         print("⚠️ No data to stream.")
@@ -50,7 +50,7 @@ def stream_to_kafka():
             "type": asset_type
         }
         composite_key = f"{message['type']}|{message['ticker']}"
-        producer.send(KAFKA_TOPIC, key=composite_key.encode("utf-8"), value=message)
+        producer.send(topic, key=composite_key.encode("utf-8"), value=message)
         print(f"✅ Sent: {message}")
 
     producer.flush()
