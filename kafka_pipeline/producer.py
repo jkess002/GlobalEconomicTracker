@@ -15,24 +15,26 @@ KAFKA_TOPIC = os.getenv("KAFKA_TOPIC")
 KAFKA_BROKER = os.getenv("KAFKA_BROKER")
 DATA_PATH = os.getenv("KAFKA_DATA_PATH")
 
-producer = KafkaProducer(
-    bootstrap_servers=KAFKA_BROKER,
-    value_serializer=lambda v: json.dumps(v).encode("utf-8"),
-    retries=5,
-    retry_backoff_ms=2000,
-)
+def get_kafka_producer():
+    if not KAFKA_BROKER:
+        raise ValueError("KAFKA_BROKER is not set.")
+    return KafkaProducer(
+        bootstrap_servers=KAFKA_BROKER,
+        value_serializer=lambda v: json.dumps(v).encode("utf-8"),
+        retries=5,
+        retry_backoff_ms=2000,
+    )
 
 
 def stream_to_kafka():
     df = pd.read_csv(DATA_PATH, parse_dates=["timestamp"])
-
     if df.empty:
         print("⚠️ No data to stream.")
         return
 
     latest = df["timestamp"].max()
     latest_df = df[df["timestamp"] == latest]
-
+    producer = get_kafka_producer()
     for _, row in latest_df.iterrows():
         asset_type = (
             "index" if row["ticker"] in INDEX_TICKERS

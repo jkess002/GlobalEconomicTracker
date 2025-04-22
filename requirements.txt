@@ -1,4 +1,5 @@
 apache-airflow[postgres]
+apache-airflow[http]
 dbt-core
 dbt-postgres
 pytest
