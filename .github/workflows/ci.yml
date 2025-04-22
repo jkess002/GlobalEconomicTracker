@@ -14,9 +14,9 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_USER: airflow_pipeline
-          POSTGRES_PASSWORD: airflow_pipeline
-          POSTGRES_DB: airflow_pipeline
+          POSTGRES_USER: airflow
+          POSTGRES_PASSWORD: airflow
+          POSTGRES_DB: airflow
         ports:
           - 5432:5432
         options: >-
@@ -55,7 +55,7 @@ jobs:
       - name: 🛠 Set up dbt profiles
         run: |
           mkdir -p ~/.dbt
-          echo "
+          cat <<EOF > ~/.dbt/profiles.yml
           global_economic_tracker:
             target: dev
             outputs:
@@ -68,7 +68,8 @@ jobs:
                 dbname: airflow
                 schema: public
                 threads: 1
-          " > ~/.dbt/profiles.yml
+          EOF
+      
 
       - name: 🚀 Run dbt models
         working-directory: ./global_economic_tracker
