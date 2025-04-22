@@ -89,7 +89,8 @@ jobs:
 
       - name: ✅ Run unit tests with coverage
         run: |
-          PYTHONPATH=./ pytest --cov=./scripts --cov-report=term-missing --cov-report=html tests/
+          PYTHONPATH=. pytest --cov=./scripts --cov-report=term-missing --cov-report=html tests/
+      
 
       - name: 📤 Upload coverage report (optional)
         if: success()
