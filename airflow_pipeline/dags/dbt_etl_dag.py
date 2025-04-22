@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import requests
-from airflow.operators.python import PythonOperator
-from airflow.providers.common.sql.operators.bash import BashOperator
+from airflow.providers.standard.operators.python import PythonOperator
+from airflow.providers.standard.operators.bash import BashOperator
 from airflow.providers.http.operators.http import HttpOperator
 from airflow.utils.trigger_rule import TriggerRule
 
