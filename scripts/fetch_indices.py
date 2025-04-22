@@ -38,6 +38,9 @@ COMMODITIES = [
     {"name": "Copper", "ticker": "HG=F"},
 ]
 
+INDEX_TOPIC = "index_data"
+COMMODITY_TOPIC = "commodity_data"
+
 def fetch_index_data(period="90d"):
     records = []
     hist_date_range = yf.download(
@@ -82,8 +85,8 @@ def fetch_commodity_data(period="90d"):
     return pd.DataFrame(records, columns=["timestamp", "name", "ticker", "close"])
 
 def insert_on_conflict(engine, table_name, df, unique_cols):
-    metadata = MetaData(bind=engine)
-    metadata.reflect()
+    metadata = MetaData()
+    metadata.reflect(bind=engine)
     table = Table(table_name, metadata, autoload_with=engine)
     stmt = insert(table).values(df.to_dict(orient="records"))
     stmt = stmt.on_conflict_do_nothing(index_elements=unique_cols)
@@ -105,74 +108,42 @@ def save_to_postgres(backfill=False):
     engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}")
     conn = engine.connect()
 
-    producer = KafkaProducer(
-        bootstrap_servers=os.getenv("KAFKA_BROKER"),
-        value_serializer=lambda v: json.dumps(v).encode("utf-8")
-    )
+    try:
+        producer = KafkaProducer(
+            bootstrap_servers=os.getenv("KAFKA_BROKER"),
+            value_serializer=lambda v: json.dumps(v).encode("utf-8")
+        )
+    except Exception as e:
+        print(f"⚠️ Kafka not available, proceeding without it. Error: {e}")
+        producer = None
 
     with conn.begin():
-        conn.execute(text("""
-            CREATE TABLE IF NOT EXISTS index_prices (
-                timestamp TIMESTAMP,
-                country TEXT,
-                name TEXT,
-                ticker TEXT,
-                price DOUBLE PRECISION
-            )
-        """))
 
-        conn.execute(text("""
-            DO $$
-            BEGIN
-                IF NOT EXISTS (
-                    SELECT 1 FROM pg_constraint
-                    WHERE conname = 'index_prices_unique'
-                ) THEN
-                    ALTER TABLE index_prices
-                    ADD CONSTRAINT index_prices_unique UNIQUE (timestamp, ticker);
-                END IF;
-            END
-            $$;
-        """))
-
-        index_has_data = table_has_data(conn, "index_prices")
-        commodity_has_data = table_has_data(conn, "commodity_prices")
+        index_has_data = table_has_data(conn, "raw_index_prices")
+        commodity_has_data = table_has_data(conn, "raw_commodity_prices")
         df_index = fetch_index_data("90d" if backfill or not index_has_data else "3d")
         df_index.columns = ["timestamp", "country", "name", "ticker", "price"]
-        insert_on_conflict(engine, "index_prices", df_index, ["timestamp", "ticker"])
-        for _, row in df_index.iterrows():
-            producer.send("index_data", row.to_dict())
+        insert_on_conflict(engine, "raw_index_prices", df_index, ["timestamp", "ticker"])
+        if producer:
+            for _, row in df_index.iterrows():
+                try:
+                    producer.send(INDEX_TOPIC, row.to_dict())
+                except Exception as e:
+                    print(f"❌ Failed to send index row to Kafka: {e}")
         print(f"✅ Saved {len(df_index)} index records.")
-
-        conn.execute(text("""
-            CREATE TABLE IF NOT EXISTS commodity_prices (
-                timestamp TIMESTAMP,
-                name TEXT,
-                ticker TEXT,
-                price DOUBLE PRECISION
-            )
-        """))
-
-        conn.execute(text("""
-            DO $$
-            BEGIN
-                IF NOT EXISTS (
-                    SELECT 1 FROM pg_constraint
-                    WHERE conname = 'commodity_prices_unique'
-                ) THEN
-                    ALTER TABLE commodity_prices
-                    ADD CONSTRAINT commodity_prices_unique UNIQUE (timestamp, ticker);
-                END IF;
-            END
-            $$;
-        """))
 
         df_commodities = fetch_commodity_data("90d" if backfill or not commodity_has_data else "3d")
         df_commodities.columns = ["timestamp", "name", "ticker", "price"]
-        insert_on_conflict(engine, "commodity_prices", df_commodities, ["timestamp", "ticker"])
-        for _, row in df_commodities.iterrows():
-            producer.send("commodity_data", row.to_dict())
-        producer.flush()
+        insert_on_conflict(engine, "raw_commodity_prices", df_commodities, ["timestamp", "ticker"])
+        if producer:
+            for _, row in df_commodities.iterrows():
+                try:
+                    producer.send(COMMODITY_TOPIC, row.to_dict())
+                except Exception as e:
+                    print(f"❌ Failed to send commodity row to Kafka: {e}")
+        if producer:
+            producer.flush()
+            producer.close()
 
         print(f"✅ Saved {len(df_commodities)} commodity records.")
 

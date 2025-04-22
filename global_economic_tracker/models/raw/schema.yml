@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: global_economic_tracker
+    schema: public
+    tables:
+      - name: raw_commodity_prices
+        description: "Raw commodity prices loaded from fetch_indices"
+      - name: raw_index_prices
+        description: "Raw index prices loaded from fetch_indices"
