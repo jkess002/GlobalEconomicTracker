@@ -15,6 +15,7 @@ KAFKA_TOPIC = os.getenv("KAFKA_TOPIC")
 KAFKA_BROKER = os.getenv("KAFKA_BROKER")
 DATA_PATH = os.getenv("KAFKA_DATA_PATH")
 
+
 def get_kafka_producer():
     if not KAFKA_BROKER:
         raise ValueError("KAFKA_BROKER is not set.")
