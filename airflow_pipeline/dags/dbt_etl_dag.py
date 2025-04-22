@@ -1,12 +1,11 @@
+import os
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
-import json
-import os
 import requests
-from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
-from airflow.providers.http.operators.http import SimpleHttpOperator
+from airflow.providers.common.sql.operators.bash import BashOperator
+from airflow.providers.http.operators.http import HttpOperator
 from airflow.utils.trigger_rule import TriggerRule
 
 from airflow import DAG
@@ -76,25 +75,23 @@ with DAG(
         bash_command='cd /opt/global_economic_tracker && dbt test --profiles-dir /home/airflow_pipeline/.dbt'
     )
 
-    start_alert = SimpleHttpOperator(
+    start_alert = HttpOperator(
         task_id='notify_start',
         http_conn_id='slack_default',
         endpoint='',
         method='POST',
         headers={"Content-Type": "application/json"},
-        data=json.dumps(
-            {"mytestkey": f"🚀 DAG ({dag.dag_id}) has started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!"})
+        json={"mytestkey": f"🚀 DAG ({dag.dag_id}) has started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!"}
     )
 
-    end_alert = SimpleHttpOperator(
+    end_alert = HttpOperator(
         task_id='notify_complete',
         http_conn_id='slack_default',
         endpoint='',
         method='POST',
         headers={"Content-Type": "application/json"},
-        data=json.dumps(
-            {
-                "mytestkey": f"✅ DAG ({dag.dag_id}) completed successfully  at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!"})
+        json={
+            "mytestkey": f"✅ DAG ({dag.dag_id}) completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!"}
     )
 
     fail_alert = PythonOperator(
