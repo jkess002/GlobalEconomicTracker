@@ -16,7 +16,7 @@ dag_triggered = False
 
 
 def trigger_airflow():
-    global dag_triggered # noqa: F824
+    global dag_triggered  # noqa: F824
     dag_triggered = True
     print("🛫 Triggering Airflow DAG...")
     try:
@@ -27,7 +27,7 @@ def trigger_airflow():
 
 
 def debounce_trigger():
-    global last_message_time, dag_triggered # noqa: F824
+    global last_message_time, dag_triggered  # noqa: F824
     while True:
         if time.time() - last_message_time > DEBOUNCE_SECONDS and not dag_triggered:
             trigger_airflow()
@@ -35,7 +35,7 @@ def debounce_trigger():
 
 
 def consume_messages():
-    global last_message_time, dag_triggered # noqa: F824
+    global last_message_time, dag_triggered  # noqa: F824
 
     consumer = KafkaConsumer(
         "economic.daily.raw",
