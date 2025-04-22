@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  test:
+  cicd:
     runs-on: self-hosted
 
     services:
@@ -78,6 +78,11 @@ jobs:
       - name: 🧪 Run dbt tests
         run: |
           dbt test --profiles-dir ~/.dbt
+
+      - name: 📄 Generate dbt docs
+        working-directory: ./global_economic_tracker
+        run: |
+          dbt docs generate --profiles-dir ~/.dbt
 
       - name: ✅ Run unit tests with coverage
         run: |

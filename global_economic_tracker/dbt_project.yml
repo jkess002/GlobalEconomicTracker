@@ -5,6 +5,8 @@ config-version: 2
 profile: 'global_economic_tracker'
 
 model-paths: ["models"]
+test-paths: ["tests"]
+
 
 models:
   global_economic_tracker:
